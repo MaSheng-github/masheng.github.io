@@ -452,14 +452,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    1.6k
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    6 Min
+                    5 Min
                 </div>
                 
 				
@@ -483,42 +483,45 @@
 </blockquote>
 <h3>在日常的数据处理中，经常会对一个DataFrame进行逐行、逐列和逐元素的操作，对应这些操作，Pandas中的map,apply和applymap可以解决绝大部分这样的数据处理需求。这篇文章就以案例附带图解的方式，为大家详细介绍一下这三个方法的实现原理，相信读完本文后，不论是小白还是Pandas的进阶学习者，都会对这三个方法有更深入的理解。</h3>
 
-<pre><code>boolean=[True,False] 
-gender=[&quot;男&quot;,&quot;女&quot;] 
-color=[&quot;white&quot;,&quot;black&quot;,&quot;yellow&quot;] 
-data=pd.DataFrame({     
-    &quot;height&quot;:np.random.randint(150,190,100),     
-    &quot;weight&quot;:np.random.randint(40,90,100),     
-    &quot;smoker&quot;:[boolean[x] for x in np.random.randint(0,2,100)],     
-    &quot;gender&quot;:[gender[x] for x in np.random.randint(0,2,100)],     
-    &quot;age&quot;:np.random.randint(15,90,100),     
-    &quot;color&quot;:[color[x] for x in np.random.randint(0,len(color),100) ] 
-} 
-)
-</code></pre><h3>数据集如下所示，各列分别代表身高、体重、是否吸烟、性别、年龄和肤色</h3>
+<pre class=" language-python"><code class="language-python">boolean<span class="token operator">=</span><span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">,</span><span class="token boolean">False</span><span class="token punctuation">]</span> 
+gender<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"男"</span><span class="token punctuation">,</span><span class="token string">"女"</span><span class="token punctuation">]</span> 
+color<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"white"</span><span class="token punctuation">,</span><span class="token string">"black"</span><span class="token punctuation">,</span><span class="token string">"yellow"</span><span class="token punctuation">]</span> 
+data<span class="token operator">=</span>pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span>     
+    <span class="token string">"height"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">150</span><span class="token punctuation">,</span><span class="token number">190</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     
+    <span class="token string">"weight"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">,</span><span class="token number">90</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     
+    <span class="token string">"smoker"</span><span class="token punctuation">:</span><span class="token punctuation">[</span>boolean<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>     
+    <span class="token string">"gender"</span><span class="token punctuation">:</span><span class="token punctuation">[</span>gender<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>     
+    <span class="token string">"age"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">90</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     
+    <span class="token string">"color"</span><span class="token punctuation">:</span><span class="token punctuation">[</span>color<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>len<span class="token punctuation">(</span>color<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">]</span> 
+<span class="token punctuation">}</span> 
+<span class="token punctuation">)</span>
+</code></pre>
+<h3>数据集如下所示，各列分别代表身高、体重、是否吸烟、性别、年龄和肤色</h3>
 
 <p><img src="https://upload-images.jianshu.io/upload_images/8316927-8fd13a08ad29fb52.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/393/format/webp" alt=""></p>
 <h1>Series数据处理</h1>
 <h3>如果需要把数据集中 gender 列的男替换为1，女替换为0，怎么做呢？绝对不是用for循环实现，使 用 Series.map() 可以很容易做到，少仅需一行代码。</h3>
 
-<pre><code>#①使用字典进行映射 
-data[&quot;gender&quot;] = data[&quot;gender&quot;].map({&quot;男&quot;:1, &quot;女&quot;:0}) 
-#②使用函数
-def gender_map(x):
-    gender = 1 if x == &quot;男&quot; else 0
-    return gender
-#注意这里传入的是函数名，不带括号
-data[&quot;gender&quot;] = data[&quot;gender&quot;].map(gender_map)</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/8316927-e8aa575576fa6af8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1097/format/webp" alt=""><br><img src="https://upload-images.jianshu.io/upload_images/8316927-11e20dc0caaf026a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1107/format/webp" alt=""></p>
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true">#①使用字典进行映射 </span>
+data<span class="token punctuation">[</span><span class="token string">"gender"</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">"gender"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>map<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"男"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"女"</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">)</span> 
+<span class="token comment" spellcheck="true">#②使用函数</span>
+<span class="token keyword">def</span> <span class="token function">gender_map</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    gender <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> x <span class="token operator">==</span> <span class="token string">"男"</span> <span class="token keyword">else</span> <span class="token number">0</span>
+    <span class="token keyword">return</span> gender
+<span class="token comment" spellcheck="true">#注意这里传入的是函数名，不带括号</span>
+data<span class="token punctuation">[</span><span class="token string">"gender"</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">"gender"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>map<span class="token punctuation">(</span>gender_map<span class="token punctuation">)</span></code></pre>
+<p><img src="https://upload-images.jianshu.io/upload_images/8316927-e8aa575576fa6af8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1097/format/webp" alt=""><br><img src="https://upload-images.jianshu.io/upload_images/8316927-11e20dc0caaf026a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1107/format/webp" alt=""></p>
 <h3>不论是利用字典还是函数进行映射，方法都是把对应的数据逐个当作参数传入到字典或函数中，得到映射后的值。</h3>
 <h1>apply</h1>
 <h3>同时Series对象还有 apply 方法， apply 方法的作用原理和 map 方法类似，区别在于 apply 能够传入 功能更为复杂的函数。怎么理解呢？一起看看下面的例子。
 假设在数据统计的过程中，年龄 age 列有较大误差，需要对其进行调整（加上或减去一个值）， 由于这个加上或减去的值未知，故在定义函数时，需要加多一个参数 bias ，此时用 map 方法是操 作不了的（传入 map 的函数只能接收一个参数）， apply 方法则可以解决这个问题</h3>
 
-<pre><code>def apply_age(x,bias):
-    return x+bias
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">apply_age</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>bias<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x<span class="token operator">+</span>bias
 
-#以元组的方式传入额外的参数
-data[&quot;age&quot;] = data[&quot;age&quot;].apply(apply_age,args=(-3,))</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/8316927-088f39b471563547.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/387/format/webp" alt=""></p>
+<span class="token comment" spellcheck="true">#以元组的方式传入额外的参数</span>
+data<span class="token punctuation">[</span><span class="token string">"age"</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">"age"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>apply_age<span class="token punctuation">,</span>args<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span></code></pre>
+<p><img src="https://upload-images.jianshu.io/upload_images/8316927-088f39b471563547.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/387/format/webp" alt=""></p>
 <h3>可以看到age列都减了3，当然，这里只是简单举了个例子，当需要进行复杂处理时，更能体现 apply 的作用。
 总而言之，对于Series而言， map 可以解决绝大多数的数据处理需求，但如果需要使用较为复杂的 函数，则需要用到 apply 方法。
 </h3>
@@ -531,39 +534,43 @@ data[&quot;age&quot;] = data[&quot;age&quot;].apply(apply_age,args=(-3,))</code>
 <h3>假设现在需要对 data 中的数值列分别进行取对数和求和的操作，这时可以用 apply 进行相应的操 作，因为是对列进行操作，所以需要指定 axis=0 ，使用下面的两行代码可以很轻松地解决我们的 问题。
 </h3>
 
-<pre><code># 沿着0轴求和
-data[[&quot;height&quot;,&quot;weight&quot;,&quot;age&quot;]].apply(np.sum, axis=0)
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 沿着0轴求和</span>
+data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"height"</span><span class="token punctuation">,</span><span class="token string">"weight"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>np<span class="token punctuation">.</span>sum<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
 
-# 沿着0轴取对数
-data[[&quot;height&quot;,&quot;weight&quot;,&quot;age&quot;]].apply(np.log, axis=0)</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/8316927-101f0388ec0daba3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1192/format/webp" alt=""><br><img src="https://upload-images.jianshu.io/upload_images/8316927-737349d9670abf55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1191/format/webp" alt=""></p>
+<span class="token comment" spellcheck="true"># 沿着0轴取对数</span>
+data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"height"</span><span class="token punctuation">,</span><span class="token string">"weight"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>np<span class="token punctuation">.</span>log<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span></code></pre>
+<p><img src="https://upload-images.jianshu.io/upload_images/8316927-101f0388ec0daba3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1192/format/webp" alt=""><br><img src="https://upload-images.jianshu.io/upload_images/8316927-737349d9670abf55.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1191/format/webp" alt=""></p>
 <h3>当沿着 轴0（axis=0） 进行操作时，会将各列( columns )默认以 Series 的形式作为参数，传入到你指定 的操作函数中，操作后合并并返回相应的结果。
 那如果在实际使用中需要按行进行操作（ axis=1 ）,那整个过程又是怎么实现的呢？
 在数据集中，有身高和体重的数据，所以根据这个，我们可以计算每个人的BMI指数（体检时常 用的指标，衡量人体肥胖程度和是否健康的重要标准），计算公式是： 体重指数BMI=体重/身高的平方 （国际单位kg/㎡） ，因为需要对每个样本进行操作，这里使用 axis=1 的 apply 进行操作，代码如下：
 </h3>
 
-<pre><code>def BMI(series):
-    weight = series[&quot;weight&quot;]
-    height = series[&quot;height&quot;]/100
-    BMI = weight/height**2
-    return BMI
+<pre class=" language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">BMI</span><span class="token punctuation">(</span>series<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    weight <span class="token operator">=</span> series<span class="token punctuation">[</span><span class="token string">"weight"</span><span class="token punctuation">]</span>
+    height <span class="token operator">=</span> series<span class="token punctuation">[</span><span class="token string">"height"</span><span class="token punctuation">]</span><span class="token operator">/</span><span class="token number">100</span>
+    BMI <span class="token operator">=</span> weight<span class="token operator">/</span>height<span class="token operator">**</span><span class="token number">2</span>
+    <span class="token keyword">return</span> BMI
 
-data[&quot;BMI&quot;] = data.apply(BMI,axis=1)</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/8316927-94038f410750c769.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1196/format/webp" alt=""></p>
+data<span class="token punctuation">[</span><span class="token string">"BMI"</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">.</span>apply<span class="token punctuation">(</span>BMI<span class="token punctuation">,</span>axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span></code></pre>
+<p><img src="https://upload-images.jianshu.io/upload_images/8316927-94038f410750c769.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1196/format/webp" alt=""></p>
 <h3>当 apply 设置了 axis=1 对行进行操作时，会默认将每一行数据以 Series 的形式（Series的索引为列 名）传入指定函数，返回相应的结果。
 总结一下对 DataFrame 的 apply 操作：
 1. 当 axis=0 时，对 每列columns 执行指定函数；当 axis=1 时，对 每行row 执行指定函数。 2. 无论 axis=0 还是 axis=1 ，其传入指定函数的默认形式均为 Series ，可以通过设置 raw=True 传入 numpy数组 。 3. 对每个Series执行结果后，会将结果整合在一起返回（若想有返回值，定义函数时需要 return 相应的值） 4. 当然， DataFrame 的 apply 和 Series 的 apply 一样，也能接收更复杂的函数，如传入参数等，实现 原理是一样的，具体用法详见官方文档。</h3>
 <h1>applymap</h1>
 <h3>applymap 的用法比较简单，会对 DataFrame 中的每个单元格执行指定函数的操作，虽然用途不如 apply 广泛，但在某些场合下还是比较有用的，如下面这个例子。</h3>
 
-<pre><code>df = pd.DataFrame(     
-    {         
-        &quot;A&quot;:np.random.randn(5),         
-        &quot;B&quot;:np.random.randn(5),         
-        &quot;C&quot;:np.random.randn(5),         
-        &quot;D&quot;:np.random.randn(5),         
-        &quot;E&quot;:np.random.randn(5),     } )</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/8316927-541b70daacaf931f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/448/format/webp" alt=""></p>
+<pre class=" language-python"><code class="language-python">df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>     
+    <span class="token punctuation">{</span>         
+        <span class="token string">"A"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>         
+        <span class="token string">"B"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>         
+        <span class="token string">"C"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>         
+        <span class="token string">"D"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>         
+        <span class="token string">"E"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token punctuation">}</span> <span class="token punctuation">)</span></code></pre>
+<p><img src="https://upload-images.jianshu.io/upload_images/8316927-541b70daacaf931f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/448/format/webp" alt=""></p>
 <h3>将所有的值保留两位小数显示，使用applymap</h3>
 
-<pre><code>df.applymap(lambda x:&quot;%.2f&quot; % x)</code></pre><p><img src="https://upload-images.jianshu.io/upload_images/8316927-f43463cb247b88d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt=""></p>
+<pre class=" language-python"><code class="language-python">df<span class="token punctuation">.</span>applymap<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span><span class="token string">"%.2f"</span> <span class="token operator">%</span> x<span class="token punctuation">)</span></code></pre>
+<p><img src="https://upload-images.jianshu.io/upload_images/8316927-f43463cb247b88d4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1200/format/webp" alt=""></p>
 <h2>Powered by MaSheng</h2>
             </div>
             <hr/>
@@ -1005,7 +1012,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">3.2k</span>&nbsp;字
+                class="white-color">3.1k</span>&nbsp;字
             
             
             
