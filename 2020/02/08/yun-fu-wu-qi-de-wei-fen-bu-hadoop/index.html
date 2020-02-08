@@ -4,14 +4,13 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Pandas数据处理-map、apply、applymap详解, MS">
-    <meta name="description" content="Pandas数据处理-map、apply、applymap详解
+    <meta name="keywords" content="云服务器的伪分布hadoop, MS">
+    <meta name="description" content="阿里云的伪分布hadoop配置
 
 
+我希望自己能够有足够的运气和足够的勇气去见到命运里更多的不同的风。也期待在未来的日子里，能够被这些涌动的气流雕刻成不一样的山川与河流。–《见风》
 
-一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。
-
-在日常的数据处">
+厦门大学数据库实验室网站提供了阿里云构建大数据环境的详细">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +18,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Pandas数据处理-map、apply、applymap详解 | MS</title>
+    <title>云服务器的伪分布hadoop | MS</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +309,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Pandas数据处理-map、apply、applymap详解</h1>
+                    <h1 class="description center-align post-title">云服务器的伪分布hadoop</h1>
                 </div>
             </div>
         </div>
@@ -432,12 +431,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
-                                <span class="chip bg-color">数据分析</span>
+                            <a href="/tags/hadoop/">
+                                <span class="chip bg-color">hadoop</span>
                             </a>
                         
-                            <a href="/tags/pandas/">
-                                <span class="chip bg-color">pandas</span>
+                            <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/">
+                                <span class="chip bg-color">阿里云</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
+                                <span class="chip bg-color">伪分布</span>
                             </a>
                         
                     </div>
@@ -448,8 +451,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="post-category">
-                                数据分析
+                            <a href="/categories/%E9%85%8D%E7%BD%AE/" class="post-category">
+                                配置
                             </a>
                         
                     </div>
@@ -461,7 +464,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-07
+                    2020-02-08
                 </div>
                 
 
@@ -470,14 +473,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.5k
+                    991
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    4 分
                 </div>
                 
 				
@@ -493,103 +496,155 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1>Pandas数据处理-map、apply、applymap详解</h1>
-<p></p>
+                <h1>阿里云的伪分布hadoop配置</h1>
 
 <blockquote>
-<p>一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</p>
+<p>我希望自己能够有足够的运气和足够的勇气去见到命运里更多的不同的风。也期待在未来的日子里，能够被这些涌动的气流雕刻成不一样的山川与河流。<br>–《见风》</p>
 </blockquote>
-<h4>在日常的数据处理中，经常会对一个DataFrame进行逐行、逐列和逐元素的操作，对应这些操作，Pandas中的map,apply和applymap可以解决绝大部分这样的数据处理需求。这篇文章就以案例附带图解的方式，为大家详细介绍一下这三个方法的实现原理，相信读完本文后，不论是小白还是Pandas的进阶学习者，都会对这三个方法有更深入的理解。</h4>
+<h3>厦门大学数据库实验室网站提供了阿里云构建大数据环境的详细流程，从服务器的配置到ubuntu的配置到大数据环境的搭建</h3>
 
-<pre class="line-numbers language-python"><code class="language-python">boolean<span class="token operator">=</span><span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">,</span><span class="token boolean">False</span><span class="token punctuation">]</span> 
-gender<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"男"</span><span class="token punctuation">,</span><span class="token string">"女"</span><span class="token punctuation">]</span> 
-color<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"white"</span><span class="token punctuation">,</span><span class="token string">"black"</span><span class="token punctuation">,</span><span class="token string">"yellow"</span><span class="token punctuation">]</span> 
-data<span class="token operator">=</span>pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span>     
-    <span class="token string">"height"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">150</span><span class="token punctuation">,</span><span class="token number">190</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     
-    <span class="token string">"weight"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">,</span><span class="token number">90</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     
-    <span class="token string">"smoker"</span><span class="token punctuation">:</span><span class="token punctuation">[</span>boolean<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>     
-    <span class="token string">"gender"</span><span class="token punctuation">:</span><span class="token punctuation">[</span>gender<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>     
-    <span class="token string">"age"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">90</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     
-    <span class="token string">"color"</span><span class="token punctuation">:</span><span class="token punctuation">[</span>color<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>len<span class="token punctuation">(</span>color<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">]</span> 
-<span class="token punctuation">}</span> 
-<span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4>数据集如下所示，各列分别代表身高、体重、是否吸烟、性别、年龄和肤色</h4>
+<p>详情见<a href="http://dblab.xmu.edu.cn/blog/1952-2/" target="_blank" rel="noopener">dblab.xmu.edu</a></p>
+<h2>一、安装jdk</h2>
+<h4>下载jdk</h4>
 
-<p><img src="/2020/02/07/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie/1.jpg" alt></p>
-<h1>Series数据处理</h1>
-<h4>如果需要把数据集中 gender 列的男替换为1，女替换为0，怎么做呢？绝对不是用for循环实现，使 用 Series.map() 可以很容易做到，少仅需一行代码。</h4>
+<p>（提取码：q4zl）<a href="https://pan.baidu.com/s/1F6uc3rp5BIHK7cbF6ezAUw" target="_blank" rel="noopener">点击这里下载</a></p>
+<h4>上传到/home下，解压缩</h4>
 
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true">#①使用字典进行映射 </span>
-data<span class="token punctuation">[</span><span class="token string">"gender"</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">"gender"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>map<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"男"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"女"</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">)</span> 
-<span class="token comment" spellcheck="true">#②使用函数</span>
-<span class="token keyword">def</span> <span class="token function">gender_map</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    gender <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> x <span class="token operator">==</span> <span class="token string">"男"</span> <span class="token keyword">else</span> <span class="token number">0</span>
-    <span class="token keyword">return</span> gender
-<span class="token comment" spellcheck="true">#注意这里传入的是函数名，不带括号</span>
-data<span class="token punctuation">[</span><span class="token string">"gender"</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">"gender"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>map<span class="token punctuation">(</span>gender_map<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2020/02/07/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie/2.jpg" alt><br><img src="/2020/02/07/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie/3.jpg" alt></p>
-<h4>不论是利用字典还是函数进行映射，方法都是把对应的数据逐个当作参数传入到字典或函数中，得到映射后的值。</h4>
-<h1>apply</h1>
-<h4>同时Series对象还有 apply 方法， apply 方法的作用原理和 map 方法类似，区别在于 apply 能够传入 功能更为复杂的函数。怎么理解呢？一起看看下面的例子。
-假设在数据统计的过程中，年龄 age 列有较大误差，需要对其进行调整（加上或减去一个值）， 由于这个加上或减去的值未知，故在定义函数时，需要加多一个参数 bias ，此时用 map 方法是操 作不了的（传入 map 的函数只能接收一个参数）， apply 方法则可以解决这个问题</h4>
+<pre><code>
+tar -zxvf /home/jdk-8u45-linux-x64.tar.gz -C /usr/local/
+</code></pre><h4>将Java添加至环境变量</h4>
 
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">apply_age</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>bias<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token keyword">return</span> x<span class="token operator">+</span>bias
+<pre><code>vim /etc/profile
+添加如下：
+export JAVA_HOME=/usr/local/jdk1.8.0_45
+export PATH=$PATH:$JAVA_HOME/bin
+</code></pre><pre><code>source /etc/profile 生效
+java -version 检测一下
+systemctl status firewalld 检查下防火墙状态
+(如果为active状态,执行
+systemctl stop firewalld
+systemctl disable firewalld)</code></pre><h2>二 、环境配置</h2>
+<h4>修改hostname</h4>
 
-<span class="token comment" spellcheck="true">#以元组的方式传入额外的参数</span>
-data<span class="token punctuation">[</span><span class="token string">"age"</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">"age"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>apply_age<span class="token punctuation">,</span>args<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2020/02/07/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie/4.jpg" alt></p>
-<h4>可以看到age列都减了3，当然，这里只是简单举了个例子，当需要进行复杂处理时，更能体现 apply 的作用。
-总而言之，对于Series而言， map 可以解决绝大多数的数据处理需求，但如果需要使用较为复杂的 函数，则需要用到 apply 方法。
-</h4>
-<h1>DataFrame数据处理</h1>
-<h2>apply</h2>
-<h4>对 DataFrame 而言， apply 是非常重要的数据处理方法，它可以接收各种各样的函数（Python内置 的或自定义的），处理方式很灵活，下面通过几个例子来看看 apply 的具体使用及其原理。
-在进行具体介绍之前，首先需要介绍一下 DataFrame 中 axis 的概念，在 DataFrame 对象的大多数方法 中，都会有 axis 这个参数，它控制了你指定的操作是沿着0轴还是1轴进行。 axis=0 代表操作对 列 columns 进行， axis=1 代表操作对 行row 进行，如下图所示。</h4>
+<pre><code>vim /etc/hostname
+修改为hadoop
+hostnamectl set-hostname hadoop 立即生效</code></pre><h4>修改映射关系</h4>
 
-<p><img src="/2020/02/07/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie/5.jpg" alt></p>
-<h4>假设现在需要对 data 中的数值列分别进行取对数和求和的操作，这时可以用 apply 进行相应的操 作，因为是对列进行操作，所以需要指定 axis=0 ，使用下面的两行代码可以很轻松地解决我们的 问题。
-</h4>
+<pre><code>vim /etc/hosts
 
-<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 沿着0轴求和</span>
-data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"height"</span><span class="token punctuation">,</span><span class="token string">"weight"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>np<span class="token punctuation">.</span>sum<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+172.19.199.187 hadoop</code></pre><blockquote>
+<p>注意：172.19.199.187改成你的私网ip！！！（私网ip阿里云控制台上有显示）</p>
+</blockquote>
+<h4>创建用户hadoop</h4>
 
-<span class="token comment" spellcheck="true"># 沿着0轴取对数</span>
-data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"height"</span><span class="token punctuation">,</span><span class="token string">"weight"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>np<span class="token punctuation">.</span>log<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2020/02/07/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie/6.jpg" alt><br><img src="/2020/02/07/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie/7.jpg" alt></p>
-<h4>当沿着 轴0（axis=0） 进行操作时，会将各列( columns )默认以 Series 的形式作为参数，传入到你指定 的操作函数中，操作后合并并返回相应的结果。
-那如果在实际使用中需要按行进行操作（ axis=1 ）,那整个过程又是怎么实现的呢？
-在数据集中，有身高和体重的数据，所以根据这个，我们可以计算每个人的BMI指数（体检时常 用的指标，衡量人体肥胖程度和是否健康的重要标准），计算公式是： 体重指数BMI=体重/身高的平方 （国际单位kg/㎡） ，因为需要对每个样本进行操作，这里使用 axis=1 的 apply 进行操作，代码如下：
-</h4>
+<pre><code>adduser hadoop 创建用户
+passwd hadoop 修改密码
 
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">BMI</span><span class="token punctuation">(</span>series<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    weight <span class="token operator">=</span> series<span class="token punctuation">[</span><span class="token string">"weight"</span><span class="token punctuation">]</span>
-    height <span class="token operator">=</span> series<span class="token punctuation">[</span><span class="token string">"height"</span><span class="token punctuation">]</span><span class="token operator">/</span><span class="token number">100</span>
-    BMI <span class="token operator">=</span> weight<span class="token operator">/</span>height<span class="token operator">**</span><span class="token number">2</span>
-    <span class="token keyword">return</span> BMI
+给hadoop用户root权限
+vim /etc/sudoers
+添加一行
+hadoop ALL=(root) NOPASSWD:ALL</code></pre><h4>设置ssh</h4>
 
-data<span class="token punctuation">[</span><span class="token string">"BMI"</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">.</span>apply<span class="token punctuation">(</span>BMI<span class="token punctuation">,</span>axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2020/02/07/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie/8.jpg" alt></p>
-<h4>当 apply 设置了 axis=1 对行进行操作时，会默认将每一行数据以 Series 的形式（Series的索引为列 名）传入指定函数，返回相应的结果。
-总结一下对 DataFrame 的 apply 操作：
-1. 当 axis=0 时，对 每列columns 执行指定函数；当 axis=1 时，对 每行row 执行指定函数。 2. 无论 axis=0 还是 axis=1 ，其传入指定函数的默认形式均为 Series ，可以通过设置 raw=True 传入 numpy数组 。 3. 对每个Series执行结果后，会将结果整合在一起返回（若想有返回值，定义函数时需要 return 相应的值） 4. 当然， DataFrame 的 apply 和 Series 的 apply 一样，也能接收更复杂的函数，如传入参数等，实现 原理是一样的，具体用法详见官方文档。</h4>
-<h1>applymap</h1>
-<h4>applymap 的用法比较简单，会对 DataFrame 中的每个单元格执行指定函数的操作，虽然用途不如 apply 广泛，但在某些场合下还是比较有用的，如下面这个例子。</h4>
+<pre><code>生成密钥
+ssh-keygen -t rsa -P &quot;&quot; 
+将密钥写入ssh中，这样在本地启动时，就可以避免输入密码
+cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></pre><h2>三、Hadoop伪分布式环境搭建</h2>
 
-<pre class="line-numbers language-python"><code class="language-python">df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>     
-    <span class="token punctuation">{</span>         
-        <span class="token string">"A"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>         
-        <span class="token string">"B"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>         
-        <span class="token string">"C"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>         
-        <span class="token string">"D"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>         
-        <span class="token string">"E"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token punctuation">}</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/2020/02/07/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie/9.jpg" alt></p>
-<h4>将所有的值保留两位小数显示，使用applymap</h4>
+<pre><code>下载hadoop,在/home下执行
+wget https://mirrors.aliyun.com/apache/hadoop/common/hadoop-2.8.5/hadoop-2.8.5.tar.gz
+改名
+mv hadoop-2.8.5 hadoop
+解压
+tar -zxvf /home/hadoop-2.8.5.tar.gz -C /usr/local/
+修改文件权限
+sudo chown -R hadoop:hadoop /usr/local/hadoop</code></pre><h4>修改hadoop/etc/hadoop/hadoop-env.sh文件</h4>
 
-<pre class="line-numbers language-python"><code class="language-python">df<span class="token punctuation">.</span>applymap<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span><span class="token string">"%.2f"</span> <span class="token operator">%</span> x<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/2020/02/07/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie/10.jpg" alt></p>
-<h2>Powered by MaSheng</h2>
+<pre class="line-numbers language-shell"><code class="language-shell">export JAVA_HOME=/usr/local/jdk1.8.0_45<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h4>修改hadoop/etc/hadoop/core-site.xml文件</h4>
+
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hadoop.tmp.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>file:/usr/local/hadoop/tmp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>Abase for other temporary directories.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>fs.defaultFS<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>hdfs://172.19.199.187:9000<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>注意：172.19.199.187改成你的私网ip！！！（私网ip阿里云控制台上有显示）</p>
+</blockquote>
+<h4>修改etc/hadoop/hdfs-site.xml文件
+    指定HDFS文件存储的副本数个数，默认是3个，这里是单台机器就设置为1，这个数字要小于datanode的节点数</h4>
+
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.replication<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.namenode.name.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>file:/usr/local/hadoop/tmp/dfs/name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.datanode.data.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>file:/usr/local/hadoop/tmp/dfs/data<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4>将hadoop添加至环境变量</h4>
+
+<pre><code>vim /etc/profile
+添加如下：
+export HADOOP_HOME=/usr/local/hadoop
+export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
+</code></pre><blockquote>
+<p>source /etc/profile 执行生效</p>
+</blockquote>
+<pre><code>hdfs namenode -format 格式化
+start-dfs.sh 启动hdfs
+jps查看</code></pre><pre><code>21923 Jps
+21592 DataNode
+21417 NameNode
+21806 SecondaryNameNode</code></pre><blockquote>
+<p>单机不用启动yarn</p>
+</blockquote>
+<h2>四 查看HDFS外部UI界面（阿里云)</h2>
+
+<blockquote>
+<p>开启服务器外网访问端口—-网络和安全-》安全组-》配置规则</p>
+</blockquote>
+<p><img src="/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/1.png" alt></p>
+<blockquote>
+<p>添加安全组规则-》添加端口50070</p>
+</blockquote>
+<p><img src="/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/2.png" alt></p>
+<blockquote>
+<p>访问web端口</p>
+</blockquote>
+<pre><code>http://公网ip:50070</code></pre><blockquote>
+<p>查看live的datanode</p>
+</blockquote>
+<p><img src="/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/3.png" alt></p>
+<blockquote>
+<p>上传一个文件执行mapreduce-wordcount测试</p>
+</blockquote>
+<pre><code>上传文件
+hadoop fs -put /lipstick.csv /
+
+执行
+hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.5.jar wordcount /lipstick.csv /output</code></pre><p><img src="/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/4.jpg" alt></p>
+<blockquote>
+<p>阿里云上搭建的hadoop集群，需要配置映射集群经过内网访问，也就是局域网的ip地址。<br>如果配置为公网IP地址，就会出现集群启动不了，namenode和secondarynamenode启动不了，如果将主机的映射文件配置为内网IP集群就可以正常启动了。但通过eclipse开发工具访问会出错，显示了阿里云内网的ip地址来访问datanode。</p>
+</blockquote>
+<p>摘录引用：</p>
+<p><a href="https://www.jianshu.com/p/18ded352cf40" target="_blank" rel="noopener">https://www.jianshu.com/p/18ded352cf40</a></p>
+<p><a href="http://dblab.xmu.edu.cn/blog/2022-2/" target="_blank" rel="noopener">http://dblab.xmu.edu.cn/blog/2022-2/</a></p>
+<p><a href="https://blog.csdn.net/u010886217/article/details/83479380" target="_blank" rel="noopener">https://blog.csdn.net/u010886217/article/details/83479380</a></p>
+
             </div>
             <hr/>
 
@@ -614,7 +669,7 @@ data<span class="token punctuation">[</span><span class="token string">"BMI"</sp
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/2020/02/07/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie/">http://yoursite.com/2020/02/07/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie/</a>
+                    <a href="http://yoursite.com/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/">http://yoursite.com/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -652,12 +707,16 @@ data<span class="token punctuation">[</span><span class="token string">"BMI"</sp
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
-                                    <span class="chip bg-color">数据分析</span>
+                                <a href="/tags/hadoop/">
+                                    <span class="chip bg-color">hadoop</span>
                                 </a>
                             
-                                <a href="/tags/pandas/">
-                                    <span class="chip bg-color">pandas</span>
+                                <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/">
+                                    <span class="chip bg-color">阿里云</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
+                                    <span class="chip bg-color">伪分布</span>
                                 </a>
                             
                         </div>
@@ -823,9 +882,73 @@ data<span class="token punctuation">[</span><span class="token string">"BMI"</sp
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="云服务器的伪分布hadoop">
+                        
+                        <span class="card-title">云服务器的伪分布hadoop</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            阿里云的伪分布hadoop配置
+
+
+我希望自己能够有足够的运气和足够的勇气去见到命运里更多的不同的风。也期待在未来的日子里，能够被这些涌动的气流雕刻成不一样的山川与河流。–《见风》
+
+厦门大学数据库实验室网站提供了阿里云构建大数据环境的详细
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-08
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%85%8D%E7%BD%AE/" class="post-category">
+                                    配置
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/hadoop/">
+                        <span class="chip bg-color">hadoop</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/">
+                        <span class="chip bg-color">阿里云</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
+                        <span class="chip bg-color">伪分布</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2020/02/07/ha-hadoop-pei-zhi-wen-jian/">
                     <div class="card-image">
@@ -844,9 +967,9 @@ data<span class="token punctuation">[</span><span class="token string">"BMI"</sp
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -870,43 +993,6 @@ data<span class="token punctuation">[</span><span class="token string">"BMI"</sp
                         <span class="chip bg-color">高可用</span>
                     </a>
                     
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/02/07/hello-world/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
-                        
-                        <span class="card-title">Hello World</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            MaSheng
-                            
-                        </span>
-                    </div>
                 </div>
                 
             </div>
