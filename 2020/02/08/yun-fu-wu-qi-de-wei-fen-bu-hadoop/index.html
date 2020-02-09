@@ -473,7 +473,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    991
+                    1.1k
                 </div>
                 
 
@@ -554,10 +554,11 @@ cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></pre><h2>三、Hado
 
 <pre><code>下载hadoop,在/home下执行
 wget https://mirrors.aliyun.com/apache/hadoop/common/hadoop-2.8.5/hadoop-2.8.5.tar.gz
-改名
-mv hadoop-2.8.5 hadoop
+
 解压
 tar -zxvf /home/hadoop-2.8.5.tar.gz -C /usr/local/
+改名
+mv hadoop-2.8.5 hadoop
 修改文件权限
 sudo chown -R hadoop:hadoop /usr/local/hadoop</code></pre><h4>修改hadoop/etc/hadoop/hadoop-env.sh文件</h4>
 
@@ -594,7 +595,18 @@ sudo chown -R hadoop:hadoop /usr/local/hadoop</code></pre><h4>修改hadoop/etc/h
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.datanode.data.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
         <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>file:/usr/local/hadoop/tmp/dfs/data<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    <span class="token comment" spellcheck="true">&lt;!-- 如果是通过公网IP访问阿里云上内网搭建的集群 --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.client.use.datanode.hostname<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>only cofig in clients<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+    <span class="token comment" spellcheck="true">&lt;!-- 用于学习的伪分布可以关闭权限检查,以实现远程操作 --></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.permissions.enabled<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4>将hadoop添加至环境变量</h4>
 
 <pre><code>vim /etc/profile
@@ -636,7 +648,7 @@ jps查看</code></pre><pre><code>21923 Jps
 hadoop fs -put /lipstick.csv /
 
 执行
-hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.5.jar wordcount /lipstick.csv /output</code></pre><p><img src="/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/4.jpg" alt></p>
+hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.5.jar wordcount /lipstick.csv /output</code></pre><p><img src="/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/4.png" alt></p>
 <blockquote>
 <p>阿里云上搭建的hadoop集群，需要配置映射集群经过内网访问，也就是局域网的ip地址。<br>如果配置为公网IP地址，就会出现集群启动不了，namenode和secondarynamenode启动不了，如果将主机的映射文件配置为内网IP集群就可以正常启动了。但通过eclipse开发工具访问会出错，显示了阿里云内网的ip地址来访问datanode。</p>
 </blockquote>
