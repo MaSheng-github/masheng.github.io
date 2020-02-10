@@ -4,11 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="云服务器的伪分布hadoop, MS">
+    <meta name="keywords" content="hive的安装, MS">
     <meta name="description" content="
-我希望自己能够有足够的运气和足够的勇气去见到命运里更多的不同的风。也期待在未来的日子里，能够被这些涌动的气流雕刻成不一样的山川与河流。–《见风》
+《美国往事》里有句台词说：”当我对世事厌倦的时候，我就会想到你。想到你在世界的某个地方生活着，存在着，我就愿意忍受一切。你的存在对我来说，很重要。
 
-厦门大学数据库实验室网站提供了阿里云构建大数据环境的详细流程，从服务器的配置到ubuntu">
+安装hive之前，请完成：
+hadoop的安装配置
+mysql的安装配置
+hdfs的启动">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -16,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>云服务器的伪分布hadoop | MS</title>
+    <title>hive的安装 | MS</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">云服务器的伪分布hadoop</h1>
+                    <h1 class="description center-align post-title">hive的安装</h1>
                 </div>
             </div>
         </div>
@@ -430,16 +433,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/">
-                                <span class="chip bg-color">阿里云</span>
+                            <a href="/tags/hive/">
+                                <span class="chip bg-color">hive</span>
                             </a>
                         
-                            <a href="/tags/hadoop/">
-                                <span class="chip bg-color">hadoop</span>
-                            </a>
-                        
-                            <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
-                                <span class="chip bg-color">伪分布</span>
+                            <a href="/tags/mysql%E6%A8%A1%E5%BC%8F/">
+                                <span class="chip bg-color">mysql模式</span>
                             </a>
                         
                     </div>
@@ -463,7 +462,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-08
+                    2020-02-09
                 </div>
                 
 
@@ -479,7 +478,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 				
@@ -496,162 +495,131 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <blockquote>
-<p>我希望自己能够有足够的运气和足够的勇气去见到命运里更多的不同的风。也期待在未来的日子里，能够被这些涌动的气流雕刻成不一样的山川与河流。<br>–《见风》</p>
+<p>《美国往事》里有句台词说：”当我对世事厌倦的时候，我就会想到你。想到你在世界的某个地方生活着，存在着，我就愿意忍受一切。你的存在对我来说，很重要。</p>
 </blockquote>
-<p>厦门大学数据库实验室网站提供了阿里云构建大数据环境的详细流程，从服务器的配置到ubuntu的配置到大数据环境的搭建</p>
-<p>详情见<a href="http://dblab.xmu.edu.cn/blog/1952-2/" target="_blank" rel="noopener">dblab.xmu.edu</a></p>
-<h2>一、安装jdk</h2>
-<h4>下载jdk</h4>
-
-<p>（提取码：q4zl）<a href="https://pan.baidu.com/s/1F6uc3rp5BIHK7cbF6ezAUw" target="_blank" rel="noopener">点击这里下载</a></p>
-<h4>上传到/home下，解压缩</h4>
-
-<pre><code>
-tar -zxvf /home/jdk-8u45-linux-x64.tar.gz -C /usr/local/
-</code></pre><h4>将Java添加至环境变量</h4>
-
-<pre><code>vim /etc/profile
-添加如下：
-export JAVA_HOME=/usr/local/jdk1.8.0_45
-export PATH=$PATH:$JAVA_HOME/bin
-</code></pre><pre><code>source /etc/profile 生效
-java -version 检测一下
-systemctl status firewalld 检查下防火墙状态
-(如果为active状态,执行
-systemctl stop firewalld
-systemctl disable firewalld)</code></pre><h2>二 、环境配置</h2>
-<h4>修改hostname</h4>
-
-<pre><code>vim /etc/hostname
-修改为hadoop
-hostnamectl set-hostname hadoop 立即生效</code></pre><h4>修改映射关系</h4>
-
-<pre><code>vim /etc/hosts
-
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-172.19.199.187 hadoop</code></pre><blockquote>
-<p>注意：172.19.199.187改成你的私网ip！！！（私网ip阿里云控制台上有显示）</p>
+<p>安装hive之前，请完成：</p>
+<p><a href="http://47.93.38.75/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/" target="_blank" rel="noopener">hadoop的安装配置</a></p>
+<p><a href="http://47.93.38.75/2020/02/09/centos7-an-zhuang-mysql5-7/" target="_blank" rel="noopener">mysql的安装配置</a></p>
+<p>hdfs的启动</p>
+<blockquote>
+<p>不推荐mysql8,因为hive版本较旧</p>
 </blockquote>
-<h4>创建用户hadoop</h4>
+<blockquote>
+<p>在大多数的文章中，都是用cp hive-default.xml.template  hive-site.xml的方式来配置hive-site.xml<br>我认为很不科学，因为这个文件有上万行，改动起来很麻烦，所以换了一种赋值方式</p>
+</blockquote>
+<h2>下载、配置Hive</h2>
+下载
 
-<pre><code>adduser hadoop 创建用户
-passwd hadoop 修改密码
+<p>wget <a href="https://mirrors.aliyun.com/apache/hive/hive-2.3.6/apache-hive-2.3.6-bin.tar.gz" target="_blank" rel="noopener">https://mirrors.aliyun.com/apache/hive/hive-2.3.6/apache-hive-2.3.6-bin.tar.gz</a></p>
+<p>安装Hive，并设置环境变量</p>
+<pre class="line-numbers language-shell"><code class="language-shell"># 解压Hive 到安装目录/usr/local/
 
-给hadoop用户root权限
-vim /etc/sudoers
-添加一行
-hadoop ALL=(root) NOPASSWD:ALL</code></pre><h4>设置ssh</h4>
+tar -zxvf apache-hive*.tar.gz -C /usr/local/
 
-<pre><code>生成密钥
-ssh-keygen -t rsa -P &quot;&quot; 
-将密钥写入ssh中，这样在本地启动时，就可以避免输入密码
-cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></pre><h2>三、Hadoop伪分布式环境搭建</h2>
+# 编辑profile文件 配置Hive环境变量
 
-<pre><code>下载hadoop,在/home下执行
-wget https://mirrors.aliyun.com/apache/hadoop/common/hadoop-2.8.5/hadoop-2.8.5.tar.gz
+vim /etc/profile
 
-解压
-tar -zxvf /home/hadoop-2.8.5.tar.gz -C /usr/local/
-改名
-mv hadoop-2.8.5 hadoop
-修改文件权限
-sudo chown -R hadoop:hadoop /usr/local/hadoop</code></pre><h4>修改hadoop/etc/hadoop/hadoop-env.sh文件</h4>
-
-<pre class="line-numbers language-shell"><code class="language-shell">export JAVA_HOME=/usr/local/jdk1.8.0_45<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4>修改hadoop/etc/hadoop/core-site.xml文件</h4>
-
+# 配置的内容
+# Hive
+export HIVE_HOME=/usr/local/apache-hive-2.3.6-bin
+export HIVE_CONF_DIR=$HIVE_HOME/conf
+export PATH=$HIVE_HOME/bin:$PATH
+# 记得source一下,使其生效
+source /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-shell"><code class="language-shell">cd /usr/local/hive/conf
+mv hive-default.xml.template hive-default.xml
+# 基于模板创建hive-env.sh
+cp hive-env.sh.template hive-env.sh<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<pre><code>cd /usr/local/hive/conf
+vim hive-site.xml</code></pre><p>添加如下内容</p>
 <pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hadoop.tmp.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>file:/usr/local/hadoop/tmp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>Abase for other temporary directories.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>fs.defaultFS<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>hdfs://172.19.199.187:9000<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hive.metastore.warehouse.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>/user/hive/warehouse<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>location of default database for the warehouse<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hive.exec.scratchdir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>/tmp/hive<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>HDFS root scratch dir for Hive jobs which gets created with write all (733) permission. For each connecting user, an HDFS scratch dir: ${hive.exec.scratchdir}/<span class="token entity" title="&lt;">&amp;lt;</span>username<span class="token entity" title="&gt;">&amp;gt;</span> is created, with ${hive.scratch.dir.permission}.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>  根据 hive-site.xml 中的上述的两条配置内容,我们需要在hadoop中建立两个目录：</p>
+<pre class="line-numbers language-sh"><code class="language-sh"># 在hdfs中建立/user/hive/warehouse并设置权限
+hadoop fs -mkdir -p /user/hive/warehouse
+hadoop fs -chmod -R 777 /user/hive/warehouse
+# 在hdfs中建立/tmp/hive/并设置权限
+hadoop fs -mkdir -p /tmp/hive/
+hadoop fs -chmod -R 777 /tmp/hive<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>通过浏览器查看公网ip:50070端口（Hadoop3.x.y端口为9870），查看HDFS是否存在新建的目录</p>
+<p>JAVA.IO的临时目录,我将其设定为hive路径下的tmp目录中，因为tmp不存在所以需要新建tmp</p>
+<pre class="line-numbers language-sh"><code class="language-sh"># 进入到hive的安装目录
+cd /usr/local/apache-hive-2.3.6-bin
+mkdir tmp
+chmod -R 777 tmp/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>设置system:java.io.tmpdir</p>
+<p>在hive-site.xml继续添加如下：</p>
+<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>java.io.tmpdir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>/usr/local/apache-hive-2.3.6-bin/tmp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>user.name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>root<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionDriverName<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>com.mysql.jdbc.Driver<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>Driver class name for a JDBC metastore<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionURL<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>jdbc:mysql://换成你的mysql主机IP地址:3306/hive?createDatabaseIfNotExist=true<span class="token entity" title="&amp;">&amp;amp;</span>characterEncoding=UTF-8<span class="token entity" title="&amp;">&amp;amp;</span>useSSL=false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionUserName<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>root<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>上面的root为MySQL数据库登录名<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>javax.jdo.option.ConnectionPassword<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>123456<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>上面的123456为MySQL数据库密码<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
+  <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <blockquote>
-<p>注意：172.19.199.187改成你的私网ip！！！（私网ip阿里云控制台上有显示）</p>
+<p>javax.jdo.option.ConnectionDriverName 对应的value修改为MySQL驱动类路径<br>注：此处使用的jdbc版本是mysql-connector-java-5.1.39-bin.jar，如果你的版本是8或者更高，请加入预处理。<br>即，将com.mysql.jdbc.Driver改为com.mysql.cj.jdbc.Driver</p>
 </blockquote>
-<h4>修改etc/hadoop/hdfs-site.xml文件
-    指定HDFS文件存储的副本数个数，默认是3个，这里是单台机器就设置为1，这个数字要小于datanode的节点数</h4>
+<p>hive-env.sh配置文件</p>
+<p>在hive的conf目录下，打开配置文件</p>
+<pre><code>vim hive-env.sh</code></pre><p>配置HIVE_AUX_JARS_PATH, HIVE_CONF_DIR, HADOOP_HOME<br>在已有的基础上修改如下：</p>
+<pre class="line-numbers language-Shell"><code class="language-Shell">#Folder containing extra libraries required for hive compilation/execution can be controlled by:
+#export HIVE_AUX_JARS_PATH=
+export HIVE_AUX_JARS_PATH=/usr/local/apache-hive-2.3.6-bin/lib
 
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.replication<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.namenode.name.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>file:/usr/local/hadoop/tmp/dfs/name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.datanode.data.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>file:/usr/local/hadoop/tmp/dfs/data<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-    <span class="token comment" spellcheck="true">&lt;!-- 如果是通过公网IP访问阿里云上内网搭建的集群 --></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.client.use.datanode.hostname<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>only cofig in clients<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-    <span class="token comment" spellcheck="true">&lt;!-- 用于学习的伪分布可以关闭权限检查,以实现远程操作 --></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.permissions.enabled<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-       <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>false<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4>将hadoop添加至环境变量</h4>
+#Hive Configuration Directory can be controlled by:
+#export HIVE_CONF_DIR=
+export HIVE_CONF_DIR=/usr/local/apache-hive-2.3.6-bin/conf
 
-<pre><code>vim /etc/profile
-添加如下：
-export HADOOP_HOME=/usr/local/hadoop
-export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
-</code></pre><blockquote>
-<p>source /etc/profile 执行生效</p>
-</blockquote>
-<pre><code>hdfs namenode -format 格式化
-start-dfs.sh 启动hdfs
-jps查看</code></pre><pre><code>21923 Jps
-21592 DataNode
-21417 NameNode
-21806 SecondaryNameNode</code></pre><blockquote>
-<p>单机不用启动yarn</p>
-</blockquote>
-<h2>四 查看HDFS外部UI界面（阿里云)</h2>
+#Set HADOOP_HOME to point to a specific hadoop install directory
+#HADOOP_HOME=${bin}/../../hadoop
+export HADOOP_HOME=/usr/local/hadoop<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>下载jdbc驱动  </p>
+<pre class="line-numbers language-sh"><code class="language-sh">wget http://mirrors.ustc.edu.cn/mysql-ftp/Downloads/Connector-J/mysql-connector-java-5.1.48.tar.gz
 
-<blockquote>
-<p>开启服务器外网访问端口—-网络和安全-》安全组-》配置规则</p>
-</blockquote>
-<p><img src="/yun-fu-wu-qi-de-wei-fen-bu-hadoop/1.png" alt></p>
-<blockquote>
-<p>添加安全组规则-》添加端口50070</p>
-</blockquote>
-<p><img src="/yun-fu-wu-qi-de-wei-fen-bu-hadoop/2.png" alt></p>
-<blockquote>
-<p>访问web端口</p>
-</blockquote>
-<pre><code>http://公网ip:50070</code></pre><blockquote>
-<p>查看live的datanode</p>
-</blockquote>
-<p><img src="/yun-fu-wu-qi-de-wei-fen-bu-hadoop/3.png" alt></p>
-<blockquote>
-<p>上传一个文件执行mapreduce-wordcount测试</p>
-</blockquote>
-<pre><code>上传文件
-hadoop fs -put /lipstick.csv /
-
-执行
-hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.5.jar wordcount /lipstick.csv /output</code></pre><p><img src="/yun-fu-wu-qi-de-wei-fen-bu-hadoop/4.png" alt></p>
-<blockquote>
-<p>阿里云上搭建的hadoop集群，需要配置映射集群经过内网访问，也就是局域网的ip地址。<br>如果配置为公网IP地址，就会出现集群启动不了，namenode和secondarynamenode启动不了，如果将主机的映射文件配置为内网IP集群就可以正常启动了。但通过eclipse开发工具访问会出错，显示了阿里云内网的ip地址来访问datanode。</p>
-</blockquote>
-<p>摘录引用：</p>
-<p><a href="https://www.jianshu.com/p/18ded352cf40" target="_blank" rel="noopener">https://www.jianshu.com/p/18ded352cf40</a></p>
-<p><a href="http://dblab.xmu.edu.cn/blog/2022-2/" target="_blank" rel="noopener">http://dblab.xmu.edu.cn/blog/2022-2/</a></p>
-<p><a href="https://blog.csdn.net/u010886217/article/details/83479380" target="_blank" rel="noopener">https://blog.csdn.net/u010886217/article/details/83479380</a></p>
+tar -zxvf mysql-connector-java-5.1.48.tar.gz   #解压
+cp mysql-connector-java-5.1.48/mysql-connector-java-5.1.48-bin.jar  /usr/local/hive/lib 
+#将mysql-connector-java-5.1.40-bin.jar拷贝到/usr/local/hive/lib目录下<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>初始化mysql的hive数据库</p>
+<pre class="line-numbers language-sh"><code class="language-sh">#对数据库进行初始化
+schematool -initSchema -dbType mysql
+#启动
+hive<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<p>建库</p>
+<pre class="line-numbers language-shell"><code class="language-shell">hive>create database test;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>web查看<br><img src="/2020/02/09/hive-de-an-zhuang/1.png" alt><br>Hive 通过 SQL 查询语句实现 wordcount</p>
+<p><a href="https://blog.csdn.net/u010360923/article/details/90341102" target="_blank" rel="noopener">https://blog.csdn.net/u010360923/article/details/90341102</a></p>
 
             </div>
             <hr/>
@@ -677,7 +645,7 @@ hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/yun-fu-wu-qi-de-wei-fen-bu-hadoop/">http://yoursite.com/yun-fu-wu-qi-de-wei-fen-bu-hadoop/</a>
+                    <a href="http://yoursite.com/2020/02/09/hive-de-an-zhuang/">http://yoursite.com/2020/02/09/hive-de-an-zhuang/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -715,16 +683,12 @@ hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/">
-                                    <span class="chip bg-color">阿里云</span>
+                                <a href="/tags/hive/">
+                                    <span class="chip bg-color">hive</span>
                                 </a>
                             
-                                <a href="/tags/hadoop/">
-                                    <span class="chip bg-color">hadoop</span>
-                                </a>
-                            
-                                <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
-                                    <span class="chip bg-color">伪分布</span>
+                                <a href="/tags/mysql%E6%A8%A1%E5%BC%8F/">
+                                    <span class="chip bg-color">mysql模式</span>
                                 </a>
                             
                         </div>
@@ -1153,11 +1117,72 @@ hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/centos7-an-zhuang-mysql5-7/">
+                <a href="/2020/02/09/hive-de-an-zhuang/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="hive的安装">
+                        
+                        <span class="card-title">hive的安装</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+《美国往事》里有句台词说：”当我对世事厌倦的时候，我就会想到你。想到你在世界的某个地方生活着，存在着，我就愿意忍受一切。你的存在对我来说，很重要。
+
+安装hive之前，请完成：
+hadoop的安装配置
+mysql的安装配置
+hdfs的启动
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-09
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%85%8D%E7%BD%AE/" class="post-category">
+                                    配置
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/hive/">
+                        <span class="chip bg-color">hive</span>
+                    </a>
+                    
+                    <a href="/tags/mysql%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">mysql模式</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2020/02/09/centos7-an-zhuang-mysql5-7/">
                     <div class="card-image">
                         
                         
@@ -1179,9 +1204,9 @@ wget -i -c http://dev.mysql.com/get/mysql57-
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-09
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-09
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1203,60 +1228,6 @@ wget -i -c http://dev.mysql.com/get/mysql57-
                     
                     <a href="/tags/mysql/">
                         <span class="chip bg-color">mysql</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/ha-hadoop-pei-zhi-wen-jian/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="HA-Hadoop">
-                        
-                        <span class="card-title">HA-Hadoop</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            高可用hadoop集群
-在Hadoop2.0之前，只有一个NameNode，若NameNode机器出现故障，那么整个集群都无法使用。这个架构存在单点故障的隐患。之后推出了HA的架构，即有两个NameNode，一台为active状态，一台为s
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E9%85%8D%E7%BD%AE/" class="post-category">
-                                    配置
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/hadoop/">
-                        <span class="chip bg-color">hadoop</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/">
-                        <span class="chip bg-color">高可用</span>
                     </a>
                     
                 </div>

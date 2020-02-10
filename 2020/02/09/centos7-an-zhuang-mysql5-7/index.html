@@ -4,8 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World, MS">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="centos7安装Mysql5.7, MS">
+    <meta name="description" content="
+要大笑、要做梦、要与众不同。人生是一场伟大的冒险。——《外婆的道歉信》
+
+为yum配置mysql57的源
+
+# 下载MySQL的repository
+wget -i -c http://dev.mysql.com/get/mysql57-">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Hello World | MS</title>
+    <title>centos7安装Mysql5.7 | MS</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -305,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/12.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World</h1>
+                    <h1 class="description center-align post-title">centos7安装Mysql5.7</h1>
                 </div>
             </div>
         </div>
@@ -425,12 +431,29 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/centos7/">
+                                <span class="chip bg-color">centos7</span>
+                            </a>
+                        
+                            <a href="/tags/mysql/">
+                                <span class="chip bg-color">mysql</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E9%85%8D%E7%BD%AE/" class="post-category">
+                                配置
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -439,7 +462,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-07
+                    2020-02-09
                 </div>
                 
 
@@ -448,7 +471,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    73
+                    299
                 </div>
                 
 
@@ -471,15 +494,63 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <blockquote>
+<p>要大笑、要做梦、要与众不同。人生是一场伟大的冒险。——《外婆的道歉信》</p>
+</blockquote>
+<h2>为yum配置mysql57的源</h2>
+
+<pre class="line-numbers language-shell"><code class="language-shell"># 下载MySQL的repository
+wget -i -c http://dev.mysql.com/get/mysql57-community-release-el7-10.noarch.rpm
+
+# 安装MySQL源
+yum -y install mysql57-community-release-el7-10.noarch.rpm
+
+# 通过yum安装MySQL
+yum -y install mysql-community-server<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2>启动mysql</h2>
+
+<pre class="line-numbers language-shell"><code class="language-shell"># 启动MySQL
+systemctl start  mysqld.service
+# 查看其状态
+systemctl status mysqld.service
+看到 active(running) 即为正确运行，如下<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/2020/02/09/centos7-an-zhuang-mysql5-7/1.png" alt></p>
+<p>查看默认密码</p>
+<pre class="line-numbers language-Shell"><code class="language-Shell">grep "password" /var/log/mysqld.log
+#查看结果如下：<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p><img src="/2020/02/09/centos7-an-zhuang-mysql5-7/2.png" alt></p>
+<pre><code>#登录
+mysql -u root -p</code></pre><p>输入默认密码<br><img src="/2020/02/09/centos7-an-zhuang-mysql5-7/3.png" alt><br>关闭弱密码限制和长度限制</p>
+<pre class="line-numbers language-sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">set</span> <span class="token keyword">global</span> validate_password_policy<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+mysql<span class="token operator">></span> <span class="token keyword">set</span> <span class="token keyword">global</span> validate_password_length<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>修改密码</p>
+<pre class="line-numbers language-sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">ALTER</span> <span class="token keyword">USER</span> <span class="token string">'root'</span>@'localhost<span class="token string">' IDENTIFIED BY '</span><span class="token number">123456</span>'<span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*
+比较新的MySQL 要使用alter user 来修改密码
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h2>开启 mysql 中 root用户远程访问权限</h2>
+查看默认设置
+
+<pre class="line-numbers language-sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">use</span> mysql<span class="token punctuation">;</span>
+mysql<span class="token operator">></span> <span class="token keyword">select</span> host<span class="token punctuation">,</span><span class="token keyword">user</span> <span class="token keyword">from</span> <span class="token keyword">user</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>可知，root用户只能本地访问：</p>
+<p><img src="/2020/02/09/centos7-an-zhuang-mysql5-7/4.png" alt></p>
+<p>开启root远程访问权限</p>
+<pre class="line-numbers language-sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">GRANT</span> <span class="token keyword">ALL</span> <span class="token keyword">PRIVILEGES</span> <span class="token keyword">ON</span> <span class="token operator">*</span><span class="token punctuation">.</span><span class="token operator">*</span> <span class="token keyword">TO</span> <span class="token string">'root'</span>@'<span class="token operator">%</span><span class="token string">' IDENTIFIED BY '</span><span class="token number">123456</span>' <span class="token keyword">WITH</span> <span class="token keyword">GRANT</span> <span class="token keyword">OPTION</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*
+% 表示全部允许ip
+root为用户
+123456为密码
+*/</span>
+mysql<span class="token operator">></span> flush <span class="token keyword">privileges</span><span class="token punctuation">;</span>
+<span class="token comment" spellcheck="true">/*
+刷新，或者重新启动mysql也行
+*/</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>再次查看</p>
+<pre class="line-numbers language-sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">select</span> host<span class="token punctuation">,</span><span class="token keyword">user</span> <span class="token keyword">from</span> <span class="token keyword">user</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/2020/02/09/centos7-an-zhuang-mysql5-7/5.png" alt></p>
+<p>摘录，引用：</p>
+<p><a href="https://blog.csdn.net/u010360923/article/details/89673406" target="_blank" rel="noopener">https://blog.csdn.net/u010360923/article/details/89673406</a></p>
 
             </div>
             <hr/>
@@ -505,7 +576,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/hello-world/">http://yoursite.com/hello-world/</a>
+                    <a href="http://yoursite.com/2020/02/09/centos7-an-zhuang-mysql5-7/">http://yoursite.com/2020/02/09/centos7-an-zhuang-mysql5-7/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -542,7 +613,15 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/centos7/">
+                                    <span class="chip bg-color">centos7</span>
+                                </a>
+                            
+                                <a href="/tags/mysql/">
+                                    <span class="chip bg-color">mysql</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -973,34 +1052,37 @@
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie/">
+                <a href="/2020/02/09/hive-de-an-zhuang/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Pandas数据处理-map、apply、applymap详解">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="hive的安装">
                         
-                        <span class="card-title">Pandas数据处理-map、apply、applymap详解</span>
+                        <span class="card-title">hive的安装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
                             
-一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。
+《美国往事》里有句台词说：”当我对世事厌倦的时候，我就会想到你。想到你在世界的某个地方生活着，存在着，我就愿意忍受一切。你的存在对我来说，很重要。
 
-在日常的数据处理中，经常会对一个DataFrame进行逐行、逐列和逐元素的操作，对
+安装hive之前，请完成：
+hadoop的安装配置
+mysql的安装配置
+hdfs的启动
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-09
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="post-category">
-                                    数据分析
+                            <a href="/categories/%E9%85%8D%E7%BD%AE/" class="post-category">
+                                    配置
                                 </a>
                             
                             
@@ -1010,12 +1092,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
-                        <span class="chip bg-color">数据分析</span>
+                    <a href="/tags/hive/">
+                        <span class="chip bg-color">hive</span>
                     </a>
                     
-                    <a href="/tags/pandas/">
-                        <span class="chip bg-color">pandas</span>
+                    <a href="/tags/mysql%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">mysql模式</span>
                     </a>
                     
                 </div>
@@ -1026,37 +1108,59 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/hello-world/">
+                <a href="/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Hello World">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="云服务器的伪分布hadoop">
                         
-                        <span class="card-title">Hello World</span>
+                        <span class="card-title">云服务器的伪分布hadoop</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
+                            
+我希望自己能够有足够的运气和足够的勇气去见到命运里更多的不同的风。也期待在未来的日子里，能够被这些涌动的气流雕刻成不一样的山川与河流。–《见风》
+
+厦门大学数据库实验室网站提供了阿里云构建大数据环境的详细流程，从服务器的配置到ubuntu
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-08
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            MaSheng
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E9%85%8D%E7%BD%AE/" class="post-category">
+                                    配置
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/hadoop/">
+                        <span class="chip bg-color">hadoop</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/">
+                        <span class="chip bg-color">阿里云</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
+                        <span class="chip bg-color">伪分布</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
