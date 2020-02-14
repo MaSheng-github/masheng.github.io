@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2020-02-09T09:54:20.977Z</updated>
+  <updated>2020-02-14T05:24:34.893Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,41 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mapreduce调优小结</title>
+    <link href="http://yoursite.com/2020/02/14/mapreduce-diao-you-xiao-jie/"/>
+    <id>http://yoursite.com/2020/02/14/mapreduce-diao-you-xiao-jie/</id>
+    <published>2020-02-14T04:44:54.000Z</published>
+    <updated>2020-02-14T05:24:34.893Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h4&gt;基本参数调节&lt;/h4&gt;
+以下参数是在自己的 MapReduce 应用程序中配置就可以生效
+
+&lt;blockquote&gt;
+&lt;p&gt;mapreduce.map.memory.mb:&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;一个 Map Task
+        
+      
+    
+    </summary>
+    
+    
+      <category term="hadoop" scheme="http://yoursite.com/categories/hadoop/"/>
+    
+    
+      <category term="hadoop" scheme="http://yoursite.com/tags/hadoop/"/>
+    
+      <category term="mapreduce调优" scheme="http://yoursite.com/tags/mapreduce%E8%B0%83%E4%BC%98/"/>
+    
+  </entry>
   
   <entry>
     <title>hive的安装</title>

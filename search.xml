@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>Mapreduce调优小结</title>
+      <link href="/2020/02/14/mapreduce-diao-you-xiao-jie/"/>
+      <url>/2020/02/14/mapreduce-diao-you-xiao-jie/</url>
+      
+        <content type="html"><![CDATA[<h4>基本参数调节</h4>以下参数是在自己的 MapReduce 应用程序中配置就可以生效<blockquote><p>mapreduce.map.memory.mb:</p></blockquote><p>一个 Map Task 可使用的内存上限（单位:MB），默认为 1024。如果 Map Task 实际使用的资源量超过该值，则会被强制杀死。</p><blockquote><p>mapreduce.reduce.memory.mb: </p></blockquote><p>一个 Reduce Task 可使用的资源上限（单位:MB），默认为 1024。如果 Reduce Task 实际使用的资源量超过该值，则会被强制杀死。</p><blockquote><p>mapreduce.map.cpu.vcores: </p></blockquote><p>每个 Maptask 可用的最多 cpu core 数目, 默认值: 1</p><blockquote><p>mapreduce.reduce.cpu.vcores: </p></blockquote><p>每个 Reducetask 可用最多 cpu core 数目默认值: 1</p><blockquote><p>mapreduce.map.java.opts: </p></blockquote><p>Map Task 的 JVM 参数，你可以在此配置默认的 java heap size 等参数, 例如：“-Xmx1024m -verbose:gc -Xloggc:/tmp/@taskid@.gc”<br>（@taskid@会被 Hadoop 框架自动换为相应的 taskid）, 默认值: “”<br>mapreduce.reduce.java.opts: Reduce Task 的 JVM 参数，你可以在此配置默认的 java heap size 等参数, 例如：“-Xmx1024m -verbose:gc -Xloggc:/tmp/@taskid@.gc”, 默认值: “”</p><blockquote><p>应该在 yarn 启动之前就配置在服务器的配置文件中才能生效</p></blockquote><blockquote><p>yarn.scheduler.minimum-allocation-mb RM </p></blockquote><p>中每个容器请求的最小配置，以 MB 为单位，默认 1024。</p><blockquote><p>yarn.scheduler.maximum-allocation-mb RM </p></blockquote><p>中每个容器请求的最大分配，以 MB 为单位，默认 8192。</p><blockquote><p>yarn.scheduler.minimum-allocation-vcores 1<br>yarn.scheduler.maximum-allocation-vcores 32</p></blockquote><blockquote><p>yarn.nodemanager.resource.memory-mb </p></blockquote><p>表示该节点上YARN可使用的物理内存总量，默认是 8192（MB），注意，如果你的节点内存资源不够 8GB，则需要调减小这个值，而 YARN不会智能的探测节点的物理内存总量。</p><p>shuffle 性能优化的关键参数，应在 yarn 启动之前就配置好</p><blockquote><p>mapreduce.task.io.sort.mb  100 </p></blockquote><p>shuffle 的环形缓冲区大小，默认 100m</p><blockquote><p>mapreduce.map.sort.spill.percent 0.8 </p></blockquote><p>环形缓冲区溢出的阈值，默认 80%</p><h4>精细调节</h4><blockquote><p>主要内存参数调节</p></blockquote><p><a href="https://blog.csdn.net/z3935212/article/details/78637157" target="_blank" rel="noopener">https://blog.csdn.net/z3935212/article/details/78637157</a><br><a href="https://www.cnblogs.com/wcgstudy/p/10788193.html" target="_blank" rel="noopener">https://www.cnblogs.com/wcgstudy/p/10788193.html</a></p><blockquote><p>Hadoop性能调优全面总结</p></blockquote><p><a href="https://blog.csdn.net/pansaky/article/details/83347357" target="_blank" rel="noopener">https://blog.csdn.net/pansaky/article/details/83347357</a></p><blockquote><p>官网</p></blockquote><p><a href="https://hadoop.apache.org/docs" target="_blank" rel="noopener">https://hadoop.apache.org/docs</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> hadoop </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hadoop </tag>
+            
+            <tag> mapreduce调优 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hive的安装</title>
       <link href="/2020/02/09/hive-de-an-zhuang/"/>
       <url>/2020/02/09/hive-de-an-zhuang/</url>
