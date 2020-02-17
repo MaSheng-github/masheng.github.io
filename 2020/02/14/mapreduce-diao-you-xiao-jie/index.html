@@ -1055,58 +1055,64 @@ mapreduce.map.memory.mb:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/02/14/mapreduce-diao-you-xiao-jie/">
+                <a href="/2020/02/17/la-gou-shu-ju-echarts-ke-shi-hua/">
                     <div class="card-image">
                         
                         
-                        <img src="http://q5ivfncap.bkt.clouddn.com/5.jpg" class="responsive-img" alt="Mapreduce调优小结">
+                        <img src="http://q5ivfncap.bkt.clouddn.com/3.jpg" class="responsive-img" alt="拉钩数据echarts可视化">
                         
-                        <span class="card-title">Mapreduce调优小结</span>
+                        <span class="card-title">拉钩数据echarts可视化</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            基本参数调节
-以下参数是在自己的 MapReduce 应用程序中配置就可以生效
+                            数据格式
 
 
-mapreduce.map.memory.mb:
+后端代码
 
-一个 Map Task 可使用的内存上限（单位:MB），默认为 1024。如果 Map Task 实际使
+import pymysql
+from flask import Flask, render_template
+import json
+
+app = Flask(__name__)
+app.jinja_env.fi
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-14
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-17
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/hadoop/" class="post-category">
-                                    hadoop
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="post-category">
+                                    数据可视化
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hadoop/">
-                        <span class="chip bg-color">hadoop</span>
+                    <a href="/tags/flask/">
+                        <span class="chip bg-color">flask</span>
                     </a>
                     
-                    <a href="/tags/mapreduce%E8%B0%83%E4%BC%98/">
-                        <span class="chip bg-color">mapreduce调优</span>
+                    <a href="/tags/echarts/">
+                        <span class="chip bg-color">echarts</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+                        <span class="chip bg-color">数据可视化</span>
                     </a>
                     
                 </div>
@@ -1315,7 +1321,7 @@ code[class*="language-"], pre[class*="language-"] { white-space: pre !important;
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">5.7k</span>&nbsp;字
+                class="white-color">6.2k</span>&nbsp;字
             
             
             
