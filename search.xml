@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>flume采集nginx日志到hdfss</title>
+      <link href="/2020/02/19/flume-cai-ji-nginx-ri-zhi-dao-hdfss/"/>
+      <url>/2020/02/19/flume-cai-ji-nginx-ri-zhi-dao-hdfss/</url>
+      
+        <content type="html"><![CDATA[<h3>conf文件</h3><pre class="line-numbers language-bash"><code class="language-bash">a1.sources <span class="token operator">=</span> r1a1.sinks <span class="token operator">=</span> k1a1.channels <span class="token operator">=</span> c1<span class="token comment" spellcheck="true"># Describe/configure the source</span>a1.sources.r1.type <span class="token operator">=</span> <span class="token function">exec</span>a1.sources.r1.command <span class="token operator">=</span> <span class="token function">tail</span> -F /usr/local/nginx/logs/access.loga1.sources.r1.channels <span class="token operator">=</span> c1<span class="token comment" spellcheck="true"># Describe the sink</span>a1.sinks.k1.type <span class="token operator">=</span> hdfsa1.sinks.k1.hdfs.path <span class="token operator">=</span> /flume/nginx/%y-%m-%d/%H%M/a1.sinks.k1.hdfs.filePrefix <span class="token operator">=</span> events-a1.sinks.k1.hdfs.round <span class="token operator">=</span> <span class="token boolean">true</span>a1.sinks.k1.hdfs.roundValue <span class="token operator">=</span> 10a1.sinks.k1.hdfs.roundUnit <span class="token operator">=</span> minutea1.sinks.k1.hdfs.rollInterval <span class="token operator">=</span> 3a1.sinks.k1.hdfs.rollSize <span class="token operator">=</span> 20a1.sinks.k1.hdfs.rollCount <span class="token operator">=</span> 5a1.sinks.k1.hdfs.batchSize <span class="token operator">=</span> 1a1.sinks.k1.hdfs.useLocalTimeStamp <span class="token operator">=</span> <span class="token boolean">true</span><span class="token comment" spellcheck="true">#生成的文件类型，默认是Sequencefile，可用DataStream，则为普通文本</span>a1.sinks.k1.hdfs.fileType <span class="token operator">=</span> DataStream<span class="token comment" spellcheck="true"># Use a channel which buffers events in memory</span>a1.channels.c1.type <span class="token operator">=</span> memorya1.channels.c1.capacity <span class="token operator">=</span> 1000a1.channels.c1.transactionCapacity <span class="token operator">=</span> 100<span class="token comment" spellcheck="true"># Bind the source and sink to the channel</span>a1.sources.r1.channels <span class="token operator">=</span> c1a1.sinks.k1.channel <span class="token operator">=</span> c1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h3>启动</h3><pre><code>flume-ng agent -n a1 -c conf -f /usr/local/flume/conf/test.conf</code></pre><p><img src="http://q5ivfncap.bkt.clouddn.com/c.png" alt></p><p><img src="http://q5ivfncap.bkt.clouddn.com/d.png" alt></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> hadoop </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> flume </tag>
+            
+            <tag> nginx </tag>
+            
+            <tag> log </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>拉钩数据echarts可视化</title>
       <link href="/2020/02/17/la-gou-shu-ju-echarts-ke-shi-hua/"/>
       <url>/2020/02/17/la-gou-shu-ju-echarts-ke-shi-hua/</url>

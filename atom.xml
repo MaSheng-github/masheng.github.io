@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.masheng.fun/"/>
-  <updated>2020-02-17T14:52:42.090Z</updated>
+  <updated>2020-02-19T12:53:16.840Z</updated>
   <id>http://www.masheng.fun/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>flume采集nginx日志到hdfss</title>
+    <link href="http://www.masheng.fun/2020/02/19/flume-cai-ji-nginx-ri-zhi-dao-hdfss/"/>
+    <id>http://www.masheng.fun/2020/02/19/flume-cai-ji-nginx-ri-zhi-dao-hdfss/</id>
+    <published>2020-02-19T11:22:48.000Z</published>
+    <updated>2020-02-19T12:53:16.840Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;h3&gt;conf文件&lt;/h3&gt;
+
+&lt;pre class=&quot;line-numbers language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;a1.sources &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="hadoop" scheme="http://www.masheng.fun/categories/hadoop/"/>
+    
+    
+      <category term="flume" scheme="http://www.masheng.fun/tags/flume/"/>
+    
+      <category term="nginx" scheme="http://www.masheng.fun/tags/nginx/"/>
+    
+      <category term="log" scheme="http://www.masheng.fun/tags/log/"/>
+    
+  </entry>
   
   <entry>
     <title>拉钩数据echarts可视化</title>
