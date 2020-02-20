@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://www.masheng.fun/"/>
-  <updated>2020-02-19T12:53:16.840Z</updated>
+  <updated>2020-02-20T03:59:13.898Z</updated>
   <id>http://www.masheng.fun/</id>
   
   <author>
@@ -15,6 +15,38 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>网易考拉口红数据分析</title>
+    <link href="http://www.masheng.fun/2020/02/20/wang-yi-kao-la-kou-hong-shu-ju-fen-xi/"/>
+    <id>http://www.masheng.fun/2020/02/20/wang-yi-kao-la-kou-hong-shu-ju-fen-xi/</id>
+    <published>2020-02-20T03:25:01.000Z</published>
+    <updated>2020-02-20T03:59:13.898Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;p&gt;口红是一类唇用美容化妆品，其主要功能是赋予嘴唇以色调，强调或改变两唇的轮廓，显示出更有生气和活力。&lt;/p&gt;
+&lt;p&gt;早在公元前3500年，人类便已开始使用一些带色的矿物和植物色素涂抹在面颊和唇上，以达到美容的目的。随着美容化妆品的发展，口红的色调、配方和功能都有较大的变化。&lt;
+        
+      
+    
+    </summary>
+    
+    
+      <category term="数据分析" scheme="http://www.masheng.fun/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+    
+      <category term="pandas" scheme="http://www.masheng.fun/tags/pandas/"/>
+    
+      <category term="口红" scheme="http://www.masheng.fun/tags/%E5%8F%A3%E7%BA%A2/"/>
+    
+      <category term="lipstick" scheme="http://www.masheng.fun/tags/lipstick/"/>
+    
+  </entry>
   
   <entry>
     <title>flume采集nginx日志到hdfss</title>
