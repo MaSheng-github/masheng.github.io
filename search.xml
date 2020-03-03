@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>hbase伪分布</title>
+      <link href="/2020/03/03/hbase-wei-fen-bu/"/>
+      <url>/2020/03/03/hbase-wei-fen-bu/</url>
+      
+        <content type="html"><![CDATA[<h3>HBase简介</h3><p>HBase是一个分布式的、面向列的开源数据库,源于Google的一篇论文《BigTable：一个结构化数据的分布式存储系统》。HBase以表的形式存储数据，表有行和列组成，列划分为若干个列族/列簇(column family)。欲了解HBase的官方资讯，请访问HBase官方网站。</p><p>HBase的运行有三种模式：单机模式、伪分布式模式、分布式模式。</p><p>单机模式：在一台计算机上安装和使用HBase，使用Ubuntu本地文件系统保存数据，不涉及数据的分布式存储HDFS；</p><p>伪分布式模式：在一台计算机上模拟一个小的集群，数据使用分布式文件系统HDFS存储；<br>分布式模式：使用多台计算机实现物理意义上的分布式存储。这里出于学习目的，我们只重点讨论单机模式和伪分布式模式。</p><h3>下载HBase安装文件</h3><pre class="line-numbers language-shell"><code class="language-shell">cd /homewget https://mirrors.aliyun.com/apache/hbase/2.1.9/hbase-2.1.9-bin.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>解压</p><pre class="line-numbers language-shell"><code class="language-shell">tar -zxvf /home/hbase-2.1.9-bin.tar.gz -C /usr/localcd  /usr/localsudo mv hbase-2.1.9 hbase<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>环境变量</p><pre class="line-numbers language-shell"><code class="language-shell">export HBASE_HOME=/usr/local/hbaseexport PATH=$PATH:${HBASE_HOME}/bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>使环境变量生效</p><pre class="line-numbers language-shell"><code class="language-shell">source /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>查看HBase版本，确定HBase是否安装成功，命令如下：</p><pre class="line-numbers language-shell"><code class="language-shell">/usr/local/hbase/bin/hbase version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3>HBase伪分布式模式配置</h3><pre><code>cd  /usr/local/hbase/confvim hbase-env.sh</code></pre><p>配置JAVA_HOME，HBASE_CLASSPATH，HBASE_MANAGES_ZK.<br>HBASE_CLASSPATH设置为本机Hadoop安装目录下的conf目录（即/usr/local/hadoop/conf）</p><pre><code>export JAVA_HOME=/usr/local/java/jdk1.8.0_45export HBASE_CLASSPATH=/usr/local/hadoop/conf export HBASE_MANAGES_ZK=true</code></pre><p>编辑hbase-site.xml</p><pre><code>vim hbase-site.xml</code></pre><pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hbase.rootdir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>hdfs://192.168.1.106:9000/hbase<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hbase.cluster.distributed<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>上面配置中，hbase.rootdir指定HBase的存储目录；hbase.cluster.distributed设置集群处于分布式模式。</p><p>上面配置中，192.168.1.106是你的阿里云ECS实例的私网IP地址，你的私网IP地址可能不是这个，可以登录阿里云控制台，查询自己的ECS实例的私网IP地址。</p><h3>测试运行HBase</h3>第一步：首先启动Hadoop，如果已经启动hadoop请跳过此步骤<p>第二步：启动HBase.</p><pre><code>start-hbase.sh</code></pre><p>jps，看进程信息</p><p>进入shell界面：</p><pre><code>hbase shell</code></pre><pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token string">'student'</span><span class="token punctuation">,</span><span class="token string">'Sname'</span><span class="token punctuation">,</span><span class="token string">'Ssex'</span><span class="token punctuation">,</span><span class="token string">'Sage'</span><span class="token punctuation">,</span><span class="token string">'Sdept'</span><span class="token punctuation">,</span><span class="token string">'course'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>添加数据</p><pre class="line-numbers language-sql"><code class="language-sql">put <span class="token string">'student'</span><span class="token punctuation">,</span><span class="token string">'95001'</span><span class="token punctuation">,</span><span class="token string">'Sname'</span><span class="token punctuation">,</span><span class="token string">'LiYing'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>查看数据</p><pre class="line-numbers language-sql"><code class="language-sql">get <span class="token string">'student'</span><span class="token punctuation">,</span><span class="token string">'95001'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>hbase的web网页查看(需要先开安全组)</p><p>公网ip:60010</p><p>引用：</p><p><a href="http://dblab.xmu.edu.cn/blog/install-hbase/" target="_blank" rel="noopener">http://dblab.xmu.edu.cn/blog/install-hbase/</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 配置 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hadoop </tag>
+            
+            <tag> hbase </tag>
+            
+            <tag> 伪分布 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>远程云服务器mongodb的配置</title>
+      <link href="/2020/03/03/yuan-cheng-yun-fu-wu-qi-mongodb-de-pei-zhi/"/>
+      <url>/2020/03/03/yuan-cheng-yun-fu-wu-qi-mongodb-de-pei-zhi/</url>
+      
+        <content type="html"><![CDATA[<h3>阿里云安装mongodb4.0</h3>下载<pre class="line-numbers language-shell"><code class="language-shell">$ cd /home$ wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.16.tgz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>解压缩安装包，并重命名文件夹。</p><pre class="line-numbers language-shell"><code class="language-shell">tar -zxvf mongodb-linux-x86_64-4.0.16.tgz -C /usr/local/mv mongodb-linux-x86_64-4.0.0 mongodb<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>配置环境变量</p><p>vim /etc/profile</p><p>添加</p><pre class="line-numbers language-sh"><code class="language-sh">export MONGODB_HOME=/usr/local/mongodbexport PATH=$MONGODB_HOME/bin:$PATH<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>使环境变量生效</p><p>source /etc/profile</p><p>创建数据库目录</p><pre class="line-numbers language-shell"><code class="language-shell">$ cd /usr/local/mongodb$ touch mongodb.conf$ mkdir db$ mkdir log$ cd log$ touch mongodb.log<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>修改mongodb配置文件</p><pre><code>vim /usr/mongodb/local/mongodb.conf</code></pre><p>添加如下</p><pre class="line-numbers language-sh"><code class="language-sh">port=27012 #修改端口，防止被攻击，默认是27012dbpath= /usr/local/mongodb/db #数据库存文件存放目录logpath= /usr/local/mongodb/log/mongodb.log #日志文件存放路径logappend=true #使用追加的方式写日志fork=true #以守护进程的方式运行，创建服务器进程maxConns=100 #最大同时连接数auth=true #启用验证journal=true #每次写入会记录一条操作日志（通过journal可以重新构造出写入的数据）。#即使宕机，启动时wiredtiger会先将数据恢复到最近一次的checkpoint点，然后重放后续的journal日志来恢复。storageEngine=wiredTiger  #存储引擎有mmapv1、wiretiger、mongorocksbind_ip = 0.0.0.0  #这样就可外部访问了，例如从win10中去连虚拟机中的MongoDB<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>设置文件夹权限</p><pre class="line-numbers language-shell"><code class="language-shell">$ chmod 777 db$ chmod 777 log<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>启动</p><pre class="line-numbers language-shell"><code class="language-shell">mongod -f /usr/local/mongodb/mongodb.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>开启端口</p><p><img src="http://img.masheng.fun/blog/20200303/YDGawXtOxurU.png" alt></p><p>进入shell</p><pre><code>mongo --port 27012</code></pre><p>依次执行下列命令 添加用户名</p><pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">//使用admin数据库</span><span class="token keyword">use</span> admin<span class="token comment" spellcheck="true">//给admin数据库添加管理员用户名和密码，用户名和密码请自行设置</span><span class="token number">db</span><span class="token punctuation">.</span>createUser<span class="token punctuation">(</span>{<span class="token keyword">user</span>:<span class="token string">"admin"</span><span class="token punctuation">,</span>pwd:<span class="token string">"123456"</span><span class="token punctuation">,</span>roles:<span class="token punctuation">[</span><span class="token string">"root"</span><span class="token punctuation">]</span>}<span class="token punctuation">)</span><span class="token comment" spellcheck="true">//验证是否成功，返回1则代表成功</span><span class="token number">db</span><span class="token punctuation">.</span>auth<span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">,</span> <span class="token string">"123456"</span><span class="token punctuation">)</span><span class="token comment" spellcheck="true">//切换到要设置的数据库,以test为例</span><span class="token keyword">use</span> test<span class="token comment" spellcheck="true">//为test创建用户,用户名和密码请自行设置。</span><span class="token number">db</span><span class="token punctuation">.</span>createUser<span class="token punctuation">(</span>{<span class="token keyword">user</span>: <span class="token string">"test"</span><span class="token punctuation">,</span> pwd: <span class="token string">"123456"</span><span class="token punctuation">,</span> roles: <span class="token punctuation">[</span>{ role: <span class="token string">"dbOwner"</span><span class="token punctuation">,</span> <span class="token number">db</span>: <span class="token string">"test"</span> }<span class="token punctuation">]</span>}<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>执行完后，ctrl + c结束shell</p><p>远程连接mongodb</p><p>官网下载robo 3t  <a href="https://robomongo.org/download" target="_blank" rel="noopener">https://robomongo.org/download</a></p><p><img src="http://img.masheng.fun/blog/20200303/MOj92rCXMrgN.png?imageslim" alt="mark"></p><p><img src="http://img.masheng.fun/blog/20200303/m9o8crLSOxnN.png?imageslim" alt="mark"><br><img src="http://img.masheng.fun/blog/20200303/Yw4ynkf5quwI.png?imageslim" alt="mark"><br><img src="http://img.masheng.fun/blog/20200303/Q3bLqIUUvwNx.png?imageslim" alt="mark"></p><p>摘录引用：</p><p><a href="https://www.jianshu.com/p/994bc7b19b26" target="_blank" rel="noopener">https://www.jianshu.com/p/994bc7b19b26</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 配置 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Mongodb </tag>
+            
+            <tag> 云服务器 </tag>
+            
+            <tag> robot3t </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>网易考拉口红数据分析</title>
       <link href="/2020/02/20/wang-yi-kao-la-kou-hong-shu-ju-fen-xi/"/>
       <url>/2020/02/20/wang-yi-kao-la-kou-hong-shu-ju-fen-xi/</url>
@@ -190,9 +248,9 @@
             
             <tag> hadoop </tag>
             
-            <tag> 阿里云 </tag>
-            
             <tag> 伪分布 </tag>
+            
+            <tag> 阿里云 </tag>
             
         </tags>
       

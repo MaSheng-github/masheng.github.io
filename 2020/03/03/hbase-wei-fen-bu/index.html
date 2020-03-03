@@ -4,14 +4,10 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Mapreduce调优小结, MS Blog">
-    <meta name="description" content="基本参数调节
-以下参数是在自己的 MapReduce 应用程序中配置就可以生效
+    <meta name="keywords" content="hbase伪分布, MS Blog">
+    <meta name="description" content="HBase简介
 
-
-mapreduce.map.memory.mb:
-
-一个 Map Task 可使用的内存上限（单位:MB），默认为 1024。如果 Map Task 实际使">
+HBase是一个分布式的、面向列的开源数据库,源于Google的一篇论文《BigTable：一个结构化数据的分布式存储系统》。HBase以表的形式存储数据，表有行和列组成，列划分为若干个列族/列簇(column famil">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +15,7 @@ mapreduce.map.memory.mb:
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>Mapreduce调优小结 | MS Blog</title>
+    <title>hbase伪分布 | MS Blog</title>
     <link rel="icon" type="image/png" href="http://img.masheng.fun/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://lib.baomitu.com/font-awesome/5.11.1/css/all.css">
@@ -311,12 +307,12 @@ mapreduce.map.memory.mb:
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.masheng.fun/5.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.masheng.fun/14.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Mapreduce调优小结</h1>
+                    <h1 class="description center-align post-title">hbase伪分布</h1>
                 </div>
             </div>
         </div>
@@ -437,8 +433,12 @@ mapreduce.map.memory.mb:
                                 <span class="chip bg-color">hadoop</span>
                             </a>
                         
-                            <a href="/tags/mapreduce%E8%B0%83%E4%BC%98/">
-                                <span class="chip bg-color">mapreduce调优</span>
+                            <a href="/tags/hbase/">
+                                <span class="chip bg-color">hbase</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
+                                <span class="chip bg-color">伪分布</span>
                             </a>
                         
                     </div>
@@ -449,8 +449,8 @@ mapreduce.map.memory.mb:
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/hadoop/" class="post-category">
-                                hadoop
+                            <a href="/categories/%E9%85%8D%E7%BD%AE/" class="post-category">
+                                配置
                             </a>
                         
                     </div>
@@ -462,7 +462,7 @@ mapreduce.map.memory.mb:
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-14
+                    2020-03-03
                 </div>
                 
 
@@ -471,7 +471,7 @@ mapreduce.map.memory.mb:
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    516
+                    631
                 </div>
                 
 
@@ -494,70 +494,61 @@ mapreduce.map.memory.mb:
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4>基本参数调节</h4>
-以下参数是在自己的 MapReduce 应用程序中配置就可以生效
+                <h3>HBase简介</h3>
 
-<blockquote>
-<p>mapreduce.map.memory.mb:</p>
-</blockquote>
-<p>一个 Map Task 可使用的内存上限（单位:MB），默认为 1024。如果 Map Task 实际使用的资源量超过该值，则会被强制杀死。</p>
-<blockquote>
-<p>mapreduce.reduce.memory.mb: </p>
-</blockquote>
-<p>一个 Reduce Task 可使用的资源上限（单位:MB），默认为 1024。如果 Reduce Task 实际使用的资源量超过该值，则会被强制杀死。</p>
-<blockquote>
-<p>mapreduce.map.cpu.vcores: </p>
-</blockquote>
-<p>每个 Maptask 可用的最多 cpu core 数目, 默认值: 1</p>
-<blockquote>
-<p>mapreduce.reduce.cpu.vcores: </p>
-</blockquote>
-<p>每个 Reducetask 可用最多 cpu core 数目默认值: 1</p>
-<blockquote>
-<p>mapreduce.map.java.opts: </p>
-</blockquote>
-<p>Map Task 的 JVM 参数，你可以在此配置默认的 java heap size 等参数, 例如：“-Xmx1024m -verbose:gc -Xloggc:/tmp/@taskid@.gc”<br>（@taskid@会被 Hadoop 框架自动换为相应的 taskid）, 默认值: “”<br>mapreduce.reduce.java.opts: Reduce Task 的 JVM 参数，你可以在此配置默认的 java heap size 等参数, 例如：“-Xmx1024m -verbose:gc -Xloggc:/tmp/@taskid@.gc”, 默认值: “”</p>
-<blockquote>
-<p>应该在 yarn 启动之前就配置在服务器的配置文件中才能生效</p>
-</blockquote>
-<blockquote>
-<p>yarn.scheduler.minimum-allocation-mb RM </p>
-</blockquote>
-<p>中每个容器请求的最小配置，以 MB 为单位，默认 1024。</p>
-<blockquote>
-<p>yarn.scheduler.maximum-allocation-mb RM </p>
-</blockquote>
-<p>中每个容器请求的最大分配，以 MB 为单位，默认 8192。</p>
-<blockquote>
-<p>yarn.scheduler.minimum-allocation-vcores 1<br>yarn.scheduler.maximum-allocation-vcores 32</p>
-</blockquote>
-<blockquote>
-<p>yarn.nodemanager.resource.memory-mb </p>
-</blockquote>
-<p>表示该节点上YARN可使用的物理内存总量，默认是 8192（MB），注意，如果你的节点内存资源不够 8GB，则需要调减小这个值，而 YARN不会智能的探测节点的物理内存总量。</p>
-<p>shuffle 性能优化的关键参数，应在 yarn 启动之前就配置好</p>
-<blockquote>
-<p>mapreduce.task.io.sort.mb  100 </p>
-</blockquote>
-<p>shuffle 的环形缓冲区大小，默认 100m</p>
-<blockquote>
-<p>mapreduce.map.sort.spill.percent 0.8 </p>
-</blockquote>
-<p>环形缓冲区溢出的阈值，默认 80%</p>
-<h4>精细调节</h4>
+<p>HBase是一个分布式的、面向列的开源数据库,源于Google的一篇论文《BigTable：一个结构化数据的分布式存储系统》。HBase以表的形式存储数据，表有行和列组成，列划分为若干个列族/列簇(column family)。欲了解HBase的官方资讯，请访问HBase官方网站。</p>
+<p>HBase的运行有三种模式：单机模式、伪分布式模式、分布式模式。</p>
+<p>单机模式：在一台计算机上安装和使用HBase，使用Ubuntu本地文件系统保存数据，不涉及数据的分布式存储HDFS；</p>
+<p>伪分布式模式：在一台计算机上模拟一个小的集群，数据使用分布式文件系统HDFS存储；<br>分布式模式：使用多台计算机实现物理意义上的分布式存储。这里出于学习目的，我们只重点讨论单机模式和伪分布式模式。</p>
+<h3>下载HBase安装文件</h3>
 
-<blockquote>
-<p>主要内存参数调节</p>
-</blockquote>
-<p><a href="https://blog.csdn.net/z3935212/article/details/78637157" target="_blank" rel="noopener">https://blog.csdn.net/z3935212/article/details/78637157</a><br><a href="https://www.cnblogs.com/wcgstudy/p/10788193.html" target="_blank" rel="noopener">https://www.cnblogs.com/wcgstudy/p/10788193.html</a></p>
-<blockquote>
-<p>Hadoop性能调优全面总结</p>
-</blockquote>
-<p><a href="https://blog.csdn.net/pansaky/article/details/83347357" target="_blank" rel="noopener">https://blog.csdn.net/pansaky/article/details/83347357</a></p>
-<blockquote>
-<p>官网</p>
-</blockquote>
-<p><a href="https://hadoop.apache.org/docs" target="_blank" rel="noopener">https://hadoop.apache.org/docs</a></p>
+<pre class="line-numbers language-shell"><code class="language-shell">cd /home
+wget https://mirrors.aliyun.com/apache/hbase/2.1.9/hbase-2.1.9-bin.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>解压</p>
+<pre class="line-numbers language-shell"><code class="language-shell">tar -zxvf /home/hbase-2.1.9-bin.tar.gz -C /usr/local
+cd  /usr/local
+sudo mv hbase-2.1.9 hbase<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<p>环境变量</p>
+<pre class="line-numbers language-shell"><code class="language-shell">export HBASE_HOME=/usr/local/hbase
+export PATH=$PATH:${HBASE_HOME}/bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>使环境变量生效</p>
+<pre class="line-numbers language-shell"><code class="language-shell">source /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>查看HBase版本，确定HBase是否安装成功，命令如下：</p>
+<pre class="line-numbers language-shell"><code class="language-shell">/usr/local/hbase/bin/hbase version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3>HBase伪分布式模式配置</h3>
+
+<pre><code>cd  /usr/local/hbase/conf
+vim hbase-env.sh</code></pre><p>配置JAVA_HOME，HBASE_CLASSPATH，HBASE_MANAGES_ZK.<br>HBASE_CLASSPATH设置为本机Hadoop安装目录下的conf目录（即/usr/local/hadoop/conf）</p>
+<pre><code>export JAVA_HOME=/usr/local/java/jdk1.8.0_45
+export HBASE_CLASSPATH=/usr/local/hadoop/conf 
+export HBASE_MANAGES_ZK=true</code></pre><p>编辑hbase-site.xml</p>
+<pre><code>vim hbase-site.xml</code></pre><pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hbase.rootdir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>hdfs://192.168.1.106:9000/hbase<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hbase.cluster.distributed<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
+                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
+        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>上面配置中，hbase.rootdir指定HBase的存储目录；hbase.cluster.distributed设置集群处于分布式模式。</p>
+<p>上面配置中，192.168.1.106是你的阿里云ECS实例的私网IP地址，你的私网IP地址可能不是这个，可以登录阿里云控制台，查询自己的ECS实例的私网IP地址。</p>
+<h3>测试运行HBase</h3>
+第一步：首先启动Hadoop，如果已经启动hadoop请跳过此步骤
+
+<p>第二步：启动HBase.</p>
+<pre><code>start-hbase.sh</code></pre><p>jps，看进程信息</p>
+<p>进入shell界面：</p>
+<pre><code>hbase shell</code></pre><pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token string">'student'</span><span class="token punctuation">,</span><span class="token string">'Sname'</span><span class="token punctuation">,</span><span class="token string">'Ssex'</span><span class="token punctuation">,</span><span class="token string">'Sage'</span><span class="token punctuation">,</span><span class="token string">'Sdept'</span><span class="token punctuation">,</span><span class="token string">'course'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>添加数据</p>
+<pre class="line-numbers language-sql"><code class="language-sql">put <span class="token string">'student'</span><span class="token punctuation">,</span><span class="token string">'95001'</span><span class="token punctuation">,</span><span class="token string">'Sname'</span><span class="token punctuation">,</span><span class="token string">'LiYing'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>查看数据</p>
+<pre class="line-numbers language-sql"><code class="language-sql">get <span class="token string">'student'</span><span class="token punctuation">,</span><span class="token string">'95001'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>hbase的web网页查看(需要先开安全组)</p>
+<p>公网ip:60010</p>
+<p>引用：</p>
+<p><a href="http://dblab.xmu.edu.cn/blog/install-hbase/" target="_blank" rel="noopener">http://dblab.xmu.edu.cn/blog/install-hbase/</a></p>
 
             </div>
             <hr/>
@@ -583,7 +574,7 @@ mapreduce.map.memory.mb:
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.masheng.fun/2020/02/14/mapreduce-diao-you-xiao-jie/">http://www.masheng.fun/2020/02/14/mapreduce-diao-you-xiao-jie/</a>
+                    <a href="http://www.masheng.fun/2020/03/03/hbase-wei-fen-bu/">http://www.masheng.fun/2020/03/03/hbase-wei-fen-bu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -625,8 +616,12 @@ mapreduce.map.memory.mb:
                                     <span class="chip bg-color">hadoop</span>
                                 </a>
                             
-                                <a href="/tags/mapreduce%E8%B0%83%E4%BC%98/">
-                                    <span class="chip bg-color">mapreduce调优</span>
+                                <a href="/tags/hbase/">
+                                    <span class="chip bg-color">hbase</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
+                                    <span class="chip bg-color">伪分布</span>
                                 </a>
                             
                         </div>
@@ -1055,64 +1050,58 @@ mapreduce.map.memory.mb:
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2020/02/17/la-gou-shu-ju-echarts-ke-shi-hua/">
+                <a href="/2020/03/03/hbase-wei-fen-bu/">
                     <div class="card-image">
                         
                         
-                        <img src="http://img.masheng.fun/3.jpg" class="responsive-img" alt="拉钩数据echarts可视化">
+                        <img src="http://img.masheng.fun/14.jpg" class="responsive-img" alt="hbase伪分布">
                         
-                        <span class="card-title">拉钩数据echarts可视化</span>
+                        <span class="card-title">hbase伪分布</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            数据格式
+                            HBase简介
 
-
-后端代码
-
-import pymysql
-from flask import Flask, render_template
-import json
-
-app = Flask(__name__)
-app.jinja_env.fi
+HBase是一个分布式的、面向列的开源数据库,源于Google的一篇论文《BigTable：一个结构化数据的分布式存储系统》。HBase以表的形式存储数据，表有行和列组成，列划分为若干个列族/列簇(column famil
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-03
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="post-category">
-                                    数据可视化
+                            <a href="/categories/%E9%85%8D%E7%BD%AE/" class="post-category">
+                                    配置
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/flask/">
-                        <span class="chip bg-color">flask</span>
+                    <a href="/tags/hadoop/">
+                        <span class="chip bg-color">hadoop</span>
                     </a>
                     
-                    <a href="/tags/echarts/">
-                        <span class="chip bg-color">echarts</span>
+                    <a href="/tags/hbase/">
+                        <span class="chip bg-color">hbase</span>
                     </a>
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
-                        <span class="chip bg-color">数据可视化</span>
+                    <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
+                        <span class="chip bg-color">伪分布</span>
                     </a>
                     
                 </div>
@@ -1126,30 +1115,30 @@ app.jinja_env.fi
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/09/hive-de-an-zhuang/">
+                <a href="/2020/03/03/yuan-cheng-yun-fu-wu-qi-mongodb-de-pei-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="http://img.masheng.fun/8.jpg" class="responsive-img" alt="hive的安装">
+                        <img src="http://img.masheng.fun/13.jpg" class="responsive-img" alt="远程云服务器mongodb的配置">
                         
-                        <span class="card-title">hive的安装</span>
+                        <span class="card-title">远程云服务器mongodb的配置</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-《美国往事》里有句台词说：”当我对世事厌倦的时候，我就会想到你。想到你在世界的某个地方生活着，存在着，我就愿意忍受一切。你的存在对我来说，很重要。
+                            阿里云安装mongodb4.0
+下载
 
-安装hive之前，请完成：
-hadoop的安装配置
-mysql的安装配置
-hdfs的启动
+$ cd /home
+$ wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.16.tgz
+解压缩安装包，并重命名文件夹。
+t
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-03
                             </span>
                         <span class="publish-author">
                             
@@ -1166,12 +1155,16 @@ hdfs的启动
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hive/">
-                        <span class="chip bg-color">hive</span>
+                    <a href="/tags/Mongodb/">
+                        <span class="chip bg-color">Mongodb</span>
                     </a>
                     
-                    <a href="/tags/mysql%E6%A8%A1%E5%BC%8F/">
-                        <span class="chip bg-color">mysql模式</span>
+                    <a href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                        <span class="chip bg-color">云服务器</span>
+                    </a>
+                    
+                    <a href="/tags/robot3t/">
+                        <span class="chip bg-color">robot3t</span>
                     </a>
                     
                 </div>
