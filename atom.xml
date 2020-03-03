@@ -43,9 +43,9 @@
     
       <category term="hadoop" scheme="http://www.masheng.fun/tags/hadoop/"/>
     
-      <category term="伪分布" scheme="http://www.masheng.fun/tags/%E4%BC%AA%E5%88%86%E5%B8%83/"/>
-    
       <category term="hbase" scheme="http://www.masheng.fun/tags/hbase/"/>
+    
+      <category term="伪分布" scheme="http://www.masheng.fun/tags/%E4%BC%AA%E5%88%86%E5%B8%83/"/>
     
   </entry>
   
@@ -315,9 +315,9 @@ $ wget
     
       <category term="hadoop" scheme="http://www.masheng.fun/tags/hadoop/"/>
     
-      <category term="阿里云" scheme="http://www.masheng.fun/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
-    
       <category term="伪分布" scheme="http://www.masheng.fun/tags/%E4%BC%AA%E5%88%86%E5%B8%83/"/>
+    
+      <category term="阿里云" scheme="http://www.masheng.fun/tags/%E9%98%BF%E9%87%8C%E4%BA%91/"/>
     
   </entry>
   

@@ -16,15 +16,15 @@
     <title>关于 | MS Blog</title>
     <link rel="icon" type="image/png" href="http://img.masheng.fun/favicon.png">
 
-    <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/font-awesome/5.11.1/css/all.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/materialize/1.0.0/css/materialize.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/aos/3.0.0-beta.6/aos.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/animate.css/3.5.1/animate.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.staticfile.org/lightgallery/1.6.11/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="https://lib.baomitu.com/font-awesome/5.11.1/css/all.css">
+    <link rel="stylesheet" type="text/css" href="https://lib.baomitu.com/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="https://lib.baomitu.com/aos/3.0.0-beta.6/aos.css">
+    <link rel="stylesheet" type="text/css" href="https://lib.baomitu.com/animate.css/3.5.1/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="https://lib.baomitu.com/lightgallery/1.6.11/css/lightgallery.min.css">
     <link rel="stylesheet" type="text/css" href="/css/matery.css">
     <link rel="stylesheet" type="text/css" href="/css/my.css">
     
-    <script src="https://cdn.staticfile.org/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://lib.baomitu.com/jquery/3.4.1/jquery.min.js"></script>
     
 <meta name="generator" content="Hexo 4.2.0"><link rel="alternate" href="/atom.xml" title="MS Blog" type="application/atom+xml">
 <link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css">
@@ -524,7 +524,7 @@
     </div>
 </div>
 
-<script type="text/javascript" src="https://cdn.staticfile.org/echarts/4.6.0/echarts.min.js"></script>
+<script type="text/javascript" src="https://lib.baomitu.com/echarts/4.6.0/echarts.min.js"></script>
 <script>
     let postsChart = echarts.init(document.getElementById('posts-chart'));
     let categoriesChart = echarts.init(document.getElementById('categories-chart'));
@@ -595,7 +595,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"配置","value":6},{"name":"hadoop","value":2},{"name":"数据分析","value":2},{"name":"数据可视化","value":1}],
+                data: [{"name":"配置","value":6},{"name":"数据分析","value":2},{"name":"hadoop","value":2},{"name":"数据可视化","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -619,7 +619,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["hadoop","pandas","伪分布","高可用","centos7","mysql","flume","nginx","log","数据分析"]
+                data: ["hadoop","pandas","伪分布","高可用","数据分析","mapreduce调优","centos7","mysql","flume","nginx"]
             }
         ],
         yAxis: [
@@ -808,6 +808,24 @@
             
             
             
+            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                <span class="chip center-align waves-effect waves-light chip-default">数据分析</span>
+            </a>
+            
+            
+            
+            <a href="/tags/pandas/">
+                <span class="chip center-align waves-effect waves-light chip-default">pandas</span>
+            </a>
+            
+            
+            
+            <a href="/tags/mapreduce%E8%B0%83%E4%BC%98/">
+                <span class="chip center-align waves-effect waves-light chip-default">mapreduce调优</span>
+            </a>
+            
+            
+            
             <a href="/tags/centos7/">
                 <span class="chip center-align waves-effect waves-light chip-default">centos7</span>
             </a>
@@ -838,50 +856,14 @@
             
             
             
-            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
-                <span class="chip center-align waves-effect waves-light chip-default">数据分析</span>
-            </a>
-            
-            
-            
-            <a href="/tags/pandas/">
-                <span class="chip center-align waves-effect waves-light chip-default">pandas</span>
-            </a>
-            
-            
-            
-            <a href="/tags/mapreduce%E8%B0%83%E4%BC%98/">
-                <span class="chip center-align waves-effect waves-light chip-default">mapreduce调优</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/">
-                <span class="chip center-align waves-effect waves-light chip-default">阿里云</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
-                <span class="chip center-align waves-effect waves-light chip-default">伪分布</span>
-            </a>
-            
-            
-            
             <a href="/tags/hbase/">
                 <span class="chip center-align waves-effect waves-light chip-default">hbase</span>
             </a>
             
             
             
-            <a href="/tags/%E5%8F%A3%E7%BA%A2/">
-                <span class="chip center-align waves-effect waves-light chip-default">口红</span>
-            </a>
-            
-            
-            
-            <a href="/tags/lipstick/">
-                <span class="chip center-align waves-effect waves-light chip-default">lipstick</span>
+            <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
+                <span class="chip center-align waves-effect waves-light chip-default">伪分布</span>
             </a>
             
             
@@ -898,20 +880,8 @@
             
             
             
-            <a href="/tags/Mongodb/">
-                <span class="chip center-align waves-effect waves-light chip-default">Mongodb</span>
-            </a>
-            
-            
-            
-            <a href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                <span class="chip center-align waves-effect waves-light chip-default">云服务器</span>
-            </a>
-            
-            
-            
-            <a href="/tags/robot3t/">
-                <span class="chip center-align waves-effect waves-light chip-default">robot3t</span>
+            <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/">
+                <span class="chip center-align waves-effect waves-light chip-default">阿里云</span>
             </a>
             
             
@@ -930,6 +900,36 @@
             
             <a href="/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
                 <span class="chip center-align waves-effect waves-light chip-default">数据可视化</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E5%8F%A3%E7%BA%A2/">
+                <span class="chip center-align waves-effect waves-light chip-default">口红</span>
+            </a>
+            
+            
+            
+            <a href="/tags/lipstick/">
+                <span class="chip center-align waves-effect waves-light chip-default">lipstick</span>
+            </a>
+            
+            
+            
+            <a href="/tags/Mongodb/">
+                <span class="chip center-align waves-effect waves-light chip-default">Mongodb</span>
+            </a>
+            
+            
+            
+            <a href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">
+                <span class="chip center-align waves-effect waves-light chip-default">云服务器</span>
+            </a>
+            
+            
+            
+            <a href="/tags/robot3t/">
+                <span class="chip center-align waves-effect waves-light chip-default">robot3t</span>
             </a>
             
             
@@ -1134,11 +1134,11 @@ $(function () {
 </div>
 
 
-    <script src="https://cdn.staticfile.org/materialize/1.0.0/js/materialize.min.js"></script>
-    <script src="https://cdn.staticfile.org/masonry/4.0.0/masonry.pkgd.min.js"></script>
-    <script src="https://cdn.staticfile.org/aos/3.0.0-beta.6/aos.js"></script>
-    <script src="https://cdn.staticfile.org/scrollprogress/3.0.2/scrollProgress.min.js"></script>
-    <script src="https://cdn.staticfile.org/lightgallery/1.6.11/js/lightgallery.min.js"></script>
+    <script src="https://lib.baomitu.com/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="https://lib.baomitu.com/masonry/4.0.0/masonry.pkgd.min.js"></script>
+    <script src="https://lib.baomitu.com/aos/3.0.0-beta.6/aos.js"></script>
+    <script src="https://lib.baomitu.com/scrollprogress/3.0.2/scrollProgress.min.js"></script>
+    <script src="https://lib.baomitu.com/lightgallery/1.6.11/js/lightgallery.min.js"></script>
     <script src="/js/matery.js"></script>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
