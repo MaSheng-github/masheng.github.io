@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.masheng.fun/pei-zhi/yun-fu-wu-qi-de-wei-fen-bu-hadoop.html</loc>
+    <lastmod>2020-03-03</lastmod>
+  </url>  <url>
     <loc>http://www.masheng.fun/pei-zhi/yuan-cheng-yun-fu-wu-qi-mongodb-de-pei-zhi.html</loc>
     <lastmod>2020-03-03</lastmod>
   </url>  <url>
@@ -14,9 +17,6 @@
     <lastmod>2020-03-02</lastmod>
   </url>  <url>
     <loc>http://www.masheng.fun/shu-ju-ke-shi-hua/la-gou-shu-ju-echarts-ke-shi-hua.html</loc>
-    <lastmod>2020-03-02</lastmod>
-  </url>  <url>
-    <loc>http://www.masheng.fun/pei-zhi/yun-fu-wu-qi-de-wei-fen-bu-hadoop.html</loc>
     <lastmod>2020-03-02</lastmod>
   </url>  <url>
     <loc>http://www.masheng.fun/hadoop/mapreduce-diao-you-xiao-jie.html</loc>

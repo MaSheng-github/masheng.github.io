@@ -618,18 +618,18 @@ jps查看</code></pre><pre><code>21923 Jps
 <blockquote>
 <p>开启服务器外网访问端口—-网络和安全-》安全组-》配置规则</p>
 </blockquote>
-<p><img src="/pei-zhi/yun-fu-wu-qi-de-wei-fen-bu-hadoop.htm/1.png" alt></p>
+<p><img src="http://img.masheng.fun/blog/20200303/Pe8K19NC8OJ0.png?imageslim" alt></p>
 <blockquote>
 <p>添加安全组规则-》添加端口50070</p>
 </blockquote>
-<p><img src="/pei-zhi/yun-fu-wu-qi-de-wei-fen-bu-hadoop.htm/2.png" alt></p>
+<p><img src="http://img.masheng.fun/blog/20200303/2BTwmpisKFjp.png?imageslim" alt></p>
 <blockquote>
 <p>访问web端口</p>
 </blockquote>
 <pre><code>http://公网ip:50070</code></pre><blockquote>
 <p>查看live的datanode</p>
 </blockquote>
-<p><img src="/pei-zhi/yun-fu-wu-qi-de-wei-fen-bu-hadoop.htm/3.png" alt></p>
+<p><img src="http://img.masheng.fun/blog/20200303/549OhuPMqcyi.png?imageslim" alt></p>
 <blockquote>
 <p>上传一个文件执行mapreduce-wordcount测试</p>
 </blockquote>
@@ -637,7 +637,7 @@ jps查看</code></pre><pre><code>21923 Jps
 hadoop fs -put /lipstick.csv /
 
 执行
-hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.5.jar wordcount /lipstick.csv /output</code></pre><p><img src="/pei-zhi/yun-fu-wu-qi-de-wei-fen-bu-hadoop.htm/4.png" alt></p>
+hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.5.jar wordcount /lipstick.csv /output</code></pre><p><img src="http://img.masheng.fun/blog/20200303/633hoqmIwqve.png?imageslim" alt></p>
 <blockquote>
 <p>阿里云上搭建的hadoop集群，需要配置映射集群经过内网访问，也就是局域网的ip地址。<br>如果配置为公网IP地址，就会出现集群启动不了，namenode和secondarynamenode启动不了，如果将主机的映射文件配置为内网IP集群就可以正常启动了。但通过eclipse开发工具访问会出错，显示了阿里云内网的ip地址来访问datanode。</p>
 </blockquote>
