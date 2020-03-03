@@ -522,7 +522,7 @@ $ cd log
 $ touch mongodb.log<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>修改mongodb配置文件</p>
 <pre><code>vim /usr/mongodb/local/mongodb.conf</code></pre><p>添加如下</p>
-<pre class="line-numbers language-sh"><code class="language-sh">port=27012 #修改端口，防止被攻击，默认是27012
+<pre class="line-numbers language-sh"><code class="language-sh">port=27012 #修改端口，防止被攻击，默认是27017
 dbpath= /usr/local/mongodb/db #数据库存文件存放目录
 logpath= /usr/local/mongodb/log/mongodb.log #日志文件存放路径
 logappend=true #使用追加的方式写日志
