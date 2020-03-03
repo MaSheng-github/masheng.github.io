@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>http://www.masheng.fun/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.html</loc>
+    <lastmod>2020-03-03</lastmod>
+  </url>  <url>
     <loc>http://www.masheng.fun/pei-zhi/yun-fu-wu-qi-de-wei-fen-bu-hadoop.html</loc>
     <lastmod>2020-03-03</lastmod>
   </url>  <url>
@@ -21,9 +24,6 @@
   </url>  <url>
     <loc>http://www.masheng.fun/hadoop/mapreduce-diao-you-xiao-jie.html</loc>
     <lastmod>2020-02-14</lastmod>
-  </url>  <url>
-    <loc>http://www.masheng.fun/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.html</loc>
-    <lastmod>2020-02-11</lastmod>
   </url>  <url>
     <loc>http://www.masheng.fun/pei-zhi/hive-de-an-zhuang.html</loc>
     <lastmod>2020-02-09</lastmod>

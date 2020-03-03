@@ -509,7 +509,7 @@ data<span class="token operator">=</span>pd<span class="token punctuation">.</sp
 <span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>数据集如下所示，各列分别代表身高、体重、是否吸烟、性别、年龄和肤色</p>
-<p><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/1.jpg" alt></p>
+<p><img src="http://img.masheng.fun/blog/20200303/2i3MX9YdQSKl.jpg?imageslim" alt></p>
 <h1>Series数据处理</h1>
 如果需要把数据集中 gender 列的男替换为1，女替换为0，怎么做呢？绝对不是用for循环实现，使 用 Series.map() 可以很容易做到，少仅需一行代码。
 
@@ -521,7 +521,7 @@ data<span class="token punctuation">[</span><span class="token string">"gender"<
     <span class="token keyword">return</span> gender
 <span class="token comment" spellcheck="true">#注意这里传入的是函数名，不带括号</span>
 data<span class="token punctuation">[</span><span class="token string">"gender"</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">"gender"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>map<span class="token punctuation">(</span>gender_map<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/2.jpg" alt><br><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/3.jpg" alt><br>不论是利用字典还是函数进行映射，方法都是把对应的数据逐个当作参数传入到字典或函数中，得到映射后的值。</p>
+<p><img src="http://img.masheng.fun/blog/20200303/shzrE6tmRwEn.jpg?imageslim" alt><br><img src="http://img.masheng.fun/blog/20200303/rNRk9QHK6rwo.jpg?imageslim" alt><br>不论是利用字典还是函数进行映射，方法都是把对应的数据逐个当作参数传入到字典或函数中，得到映射后的值。</p>
 <h1>apply</h1>
 同时Series对象还有 apply 方法， apply 方法的作用原理和 map 方法类似，区别在于 apply 能够传入 功能更为复杂的函数。怎么理解呢？一起看看下面的例子。
 假设在数据统计的过程中，年龄 age 列有较大误差，需要对其进行调整（加上或减去一个值）， 由于这个加上或减去的值未知，故在定义函数时，需要加多一个参数 bias ，此时用 map 方法是操 作不了的（传入 map 的函数只能接收一个参数）， apply 方法则可以解决这个问题
@@ -531,19 +531,19 @@ data<span class="token punctuation">[</span><span class="token string">"gender"<
 
 <span class="token comment" spellcheck="true">#以元组的方式传入额外的参数</span>
 data<span class="token punctuation">[</span><span class="token string">"age"</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">"age"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>apply_age<span class="token punctuation">,</span>args<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/4.jpg" alt><br>可以看到age列都减了3，当然，这里只是简单举了个例子，当需要进行复杂处理时，更能体现 apply 的作用。<br>总而言之，对于Series而言， map 可以解决绝大多数的数据处理需求，但如果需要使用较为复杂的 函数，则需要用到 apply 方法。</p>
+<p><img src="http://img.masheng.fun/blog/20200303/wCEFrTtRBNRx.jpg?imageslim" alt><br>可以看到age列都减了3，当然，这里只是简单举了个例子，当需要进行复杂处理时，更能体现 apply 的作用。<br>总而言之，对于Series而言， map 可以解决绝大多数的数据处理需求，但如果需要使用较为复杂的 函数，则需要用到 apply 方法。</p>
 <h1>DataFrame数据处理</h1>
 <h2>apply</h2>
 对 DataFrame 而言， apply 是非常重要的数据处理方法，它可以接收各种各样的函数（Python内置 的或自定义的），处理方式很灵活，下面通过几个例子来看看 apply 的具体使用及其原理。
 在进行具体介绍之前，首先需要介绍一下 DataFrame 中 axis 的概念，在 DataFrame 对象的大多数方法 中，都会有 axis 这个参数，它控制了你指定的操作是沿着0轴还是1轴进行。 axis=0 代表操作对 列 columns 进行， axis=1 代表操作对 行row 进行，如下图所示。
 
-<p><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/5.jpg" alt><br>假设现在需要对 data 中的数值列分别进行取对数和求和的操作，这时可以用 apply 进行相应的操 作，因为是对列进行操作，所以需要指定 axis=0 ，使用下面的两行代码可以很轻松地解决我们的 问题。</p>
+<p><img src="http://img.masheng.fun/blog/20200303/Brysk0t2vQNy.jpg?imageslim" alt><br>假设现在需要对 data 中的数值列分别进行取对数和求和的操作，这时可以用 apply 进行相应的操 作，因为是对列进行操作，所以需要指定 axis=0 ，使用下面的两行代码可以很轻松地解决我们的 问题。</p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 沿着0轴求和</span>
 data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"height"</span><span class="token punctuation">,</span><span class="token string">"weight"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>np<span class="token punctuation">.</span>sum<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
 
 <span class="token comment" spellcheck="true"># 沿着0轴取对数</span>
 data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"height"</span><span class="token punctuation">,</span><span class="token string">"weight"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>np<span class="token punctuation">.</span>log<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/6.jpg" alt><br><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/7.jpg" alt><br>当沿着 轴0（axis=0） 进行操作时，会将各列( columns )默认以 Series 的形式作为参数，传入到你指定 的操作函数中，操作后合并并返回相应的结果。<br>那如果在实际使用中需要按行进行操作（ axis=1 ）,那整个过程又是怎么实现的呢？<br>在数据集中，有身高和体重的数据，所以根据这个，我们可以计算每个人的BMI指数（体检时常 用的指标，衡量人体肥胖程度和是否健康的重要标准），计算公式是： 体重指数BMI=体重/身高的平方 （国际单位kg/㎡） ，因为需要对每个样本进行操作，这里使用 axis=1 的 apply 进行操作，代码如下：</p>
+<p><img src="http://img.masheng.fun/blog/20200303/9tdpKHJ1UNEP.jpg?imageslim" alt><br><img src="http://img.masheng.fun/blog/20200303/P5o0XDqISdhW.jpg?imageslim" alt><br>当沿着 轴0（axis=0） 进行操作时，会将各列( columns )默认以 Series 的形式作为参数，传入到你指定 的操作函数中，操作后合并并返回相应的结果。<br>那如果在实际使用中需要按行进行操作（ axis=1 ）,那整个过程又是怎么实现的呢？<br>在数据集中，有身高和体重的数据，所以根据这个，我们可以计算每个人的BMI指数（体检时常 用的指标，衡量人体肥胖程度和是否健康的重要标准），计算公式是： 体重指数BMI=体重/身高的平方 （国际单位kg/㎡） ，因为需要对每个样本进行操作，这里使用 axis=1 的 apply 进行操作，代码如下：</p>
 <pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">BMI</span><span class="token punctuation">(</span>series<span class="token punctuation">)</span><span class="token punctuation">:</span>
     weight <span class="token operator">=</span> series<span class="token punctuation">[</span><span class="token string">"weight"</span><span class="token punctuation">]</span>
     height <span class="token operator">=</span> series<span class="token punctuation">[</span><span class="token string">"height"</span><span class="token punctuation">]</span><span class="token operator">/</span><span class="token number">100</span>
@@ -551,7 +551,7 @@ data<span class="token punctuation">[</span><span class="token punctuation">[</s
     <span class="token keyword">return</span> BMI
 
 data<span class="token punctuation">[</span><span class="token string">"BMI"</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">.</span>apply<span class="token punctuation">(</span>BMI<span class="token punctuation">,</span>axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/8.jpg" alt><br>当 apply 设置了 axis=1 对行进行操作时，会默认将每一行数据以 Series 的形式（Series的索引为列 名）传入指定函数，返回相应的结果。<br>总结一下对 DataFrame 的 apply 操作：</p>
+<p><img src="http://img.masheng.fun/blog/20200303/I2lQhNqTGev5.jpg?imageslim" alt><br>当 apply 设置了 axis=1 对行进行操作时，会默认将每一行数据以 Series 的形式（Series的索引为列 名）传入指定函数，返回相应的结果。<br>总结一下对 DataFrame 的 apply 操作：</p>
 <ol>
 <li>当 axis=0 时，对 每列columns 执行指定函数；当 axis=1 时，对 每行row 执行指定函数。 2. 无论 axis=0 还是 axis=1 ，其传入指定函数的默认形式均为 Series ，可以通过设置 raw=True 传入 numpy数组 。 3. 对每个Series执行结果后，会将结果整合在一起返回（若想有返回值，定义函数时需要 return 相应的值） 4. 当然， DataFrame 的 apply 和 Series 的 apply 一样，也能接收更复杂的函数，如传入参数等，实现 原理是一样的，具体用法详见官方文档。<h1>applymap</h1>
 applymap 的用法比较简单，会对 DataFrame 中的每个单元格执行指定函数的操作，虽然用途不如 apply 广泛，但在某些场合下还是比较有用的，如下面这个例子。
@@ -565,10 +565,12 @@ applymap 的用法比较简单，会对 DataFrame 中的每个单元格执行指
         <span class="token string">"C"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>         
         <span class="token string">"D"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>         
         <span class="token string">"E"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token punctuation">}</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/9.jpg" alt><br>将所有的值保留两位小数显示，使用applymap</p>
+<p><img src="http://img.masheng.fun/blog/20200303/N3bGo2xlCIkv.jpg?imageslim" alt><br>将所有的值保留两位小数显示，使用applymap</p>
 <pre class="line-numbers language-python"><code class="language-python">df<span class="token punctuation">.</span>applymap<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span><span class="token string">"%.2f"</span> <span class="token operator">%</span> x<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/10.jpg" alt></p>
-<h2>Powered by MaSheng</h2>
+<p><img src="http://img.masheng.fun/blog/20200303/8Cu1C9GJM5vx.jpg?imageslim" alt></p>
+<p>引用自：</p>
+<p><a href="https://www.jianshu.com/p/e76861ed1815" target="_blank" rel="noopener">https://www.jianshu.com/p/e76861ed1815</a></p>
+
             </div>
             <hr/>
 
