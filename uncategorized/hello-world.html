@@ -4,18 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="拉钩数据echarts可视化, MS Blog">
-    <meta name="description" content="数据格式
-
-
-后端代码
-
-import pymysql
-from flask import Flask, render_template
-import json
-
-app = Flask(__name__)
-app.jinja_env.fi">
+    <meta name="keywords" content="Hello World, MS Blog">
+    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -23,7 +13,7 @@ app.jinja_env.fi">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>拉钩数据echarts可视化 | MS Blog</title>
+    <title>Hello World | MS Blog</title>
     <link rel="icon" type="image/png" href="http://img.masheng.fun/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://lib.baomitu.com/font-awesome/5.11.1/css/all.css">
@@ -315,12 +305,12 @@ app.jinja_env.fi">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.masheng.fun/3.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.masheng.fun/12.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">拉钩数据echarts可视化</h1>
+                    <h1 class="description center-align post-title">Hello World</h1>
                 </div>
             </div>
         </div>
@@ -435,33 +425,12 @@ app.jinja_env.fi">
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                    <div class="article-tag">
-                        
-                            <a href="/tags/flask/">
-                                <span class="chip bg-color">flask</span>
-                            </a>
-                        
-                            <a href="/tags/echarts/">
-                                <span class="chip bg-color">echarts</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
-                                <span class="chip bg-color">数据可视化</span>
-                            </a>
-                        
-                    </div>
+                          <div class="article-tag">
+                            <span class="chip bg-color">无标签</span>
+                          </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="post-category">
-                                数据可视化
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -470,7 +439,7 @@ app.jinja_env.fi">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-17
+                    2020-02-07
                 </div>
                 
 
@@ -479,14 +448,14 @@ app.jinja_env.fi">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    405
+                    73
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 				
@@ -502,134 +471,15 @@ app.jinja_env.fi">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h4>数据格式</h4>
-
-<p><img src="http://img.masheng.fun/a.png" alt></p>
-<h4>后端代码</h4>
-
-<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">import</span> pymysql
-<span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask<span class="token punctuation">,</span> render_template
-<span class="token keyword">import</span> json
-
-app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
-app<span class="token punctuation">.</span>jinja_env<span class="token punctuation">.</span>filters<span class="token punctuation">[</span><span class="token string">'zip'</span><span class="token punctuation">]</span> <span class="token operator">=</span> zip
-
-
-<span class="token keyword">def</span> <span class="token function">handel</span><span class="token punctuation">(</span>sql<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    conn <span class="token operator">=</span> pymysql<span class="token punctuation">.</span>connect<span class="token punctuation">(</span>
-        host<span class="token operator">=</span><span class="token string">'localhost'</span><span class="token punctuation">,</span>
-        port<span class="token operator">=</span><span class="token number">3306</span><span class="token punctuation">,</span>
-        user<span class="token operator">=</span><span class="token string">'root'</span><span class="token punctuation">,</span>
-        password<span class="token operator">=</span><span class="token string">'123456'</span><span class="token punctuation">,</span>
-        database<span class="token operator">=</span><span class="token string">'lagoudb'</span><span class="token punctuation">,</span>
-        charset<span class="token operator">=</span><span class="token string">'utf8'</span>
-    <span class="token punctuation">)</span>
-    cur <span class="token operator">=</span> conn<span class="token punctuation">.</span>cursor<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    cur<span class="token punctuation">.</span>execute<span class="token punctuation">(</span>sql<span class="token punctuation">)</span>
-    result <span class="token operator">=</span> cur<span class="token punctuation">.</span>fetchall<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> result
-@app<span class="token punctuation">.</span>route<span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
-<span class="token keyword">def</span> <span class="token function">salary_average</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    sql_city <span class="token operator">=</span> <span class="token string">"SELECT city FROM citys order by id"</span>
-    rs_city <span class="token operator">=</span> handel<span class="token punctuation">(</span>sql_city<span class="token punctuation">)</span>
-    citys <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> rs_city<span class="token punctuation">:</span>
-        citys<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    sql_kind <span class="token operator">=</span> <span class="token string">"SELECT kd FROM kds order by id"</span>
-    rs_kind <span class="token operator">=</span> handel<span class="token punctuation">(</span>sql_kind<span class="token punctuation">)</span>
-    kinds <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> j <span class="token keyword">in</span> rs_kind<span class="token punctuation">:</span>
-        kinds<span class="token punctuation">.</span>append<span class="token punctuation">(</span>j<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    sql_salary <span class="token operator">=</span> <span class="token string">"select city as `area`,kd as `station`,ifnull(round(avg((convert(left(salary,instr(salary,'k')-1),signed)+convert(replace(substr(salary,instr(salary,'-')+1),'k',''),signed))/2)),0) as `counts` from (select citys.id as c_id,kds.id as k_id,city,kd from citys  join kds  order by citys.id,kds.id) a left join jobinfos b on a.c_id=b.city_id and a.k_id=b.kd_id group by a.c_id,a.k_id"</span>
-    rs_salary <span class="token operator">=</span> handel<span class="token punctuation">(</span>sql_salary<span class="token punctuation">)</span>
-    rs_max <span class="token operator">=</span> handel<span class="token punctuation">(</span>sql_max<span class="token punctuation">)</span>
-    salarys <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    shanghai <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    suzhou <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    wuxi <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    nanjing <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> s <span class="token keyword">in</span> rs_salary<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'上海'</span><span class="token punctuation">:</span>
-            shanghai<span class="token punctuation">.</span>append<span class="token punctuation">(</span>int<span class="token punctuation">(</span>s<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">elif</span> s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'苏州'</span><span class="token punctuation">:</span>
-            suzhou<span class="token punctuation">.</span>append<span class="token punctuation">(</span>int<span class="token punctuation">(</span>s<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">elif</span> s<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> <span class="token string">'南京'</span><span class="token punctuation">:</span>
-            nanjing<span class="token punctuation">.</span>append<span class="token punctuation">(</span>int<span class="token punctuation">(</span>s<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-        <span class="token keyword">else</span><span class="token punctuation">:</span>
-            wuxi<span class="token punctuation">.</span>append<span class="token punctuation">(</span>int<span class="token punctuation">(</span>s<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    salarys<span class="token punctuation">.</span>append<span class="token punctuation">(</span>shanghai<span class="token punctuation">)</span>
-    salarys<span class="token punctuation">.</span>append<span class="token punctuation">(</span>suzhou<span class="token punctuation">)</span>
-    salarys<span class="token punctuation">.</span>append<span class="token punctuation">(</span>wuxi<span class="token punctuation">)</span>
-    salarys<span class="token punctuation">.</span>append<span class="token punctuation">(</span>nanjing<span class="token punctuation">)</span>
-    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'new_lagou.html'</span><span class="token punctuation">,</span> salarys<span class="token operator">=</span>salarys<span class="token punctuation">,</span> kinds<span class="token operator">=</span>kinds<span class="token punctuation">,</span> citys<span class="token operator">=</span>citys<span class="token punctuation">)</span>
-
-
-<span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">"__main__"</span><span class="token punctuation">:</span>
-    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>debug<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4>前端代码</h4>
-
-<pre class="line-numbers language-html"><code class="language-html"><span class="token doctype">&lt;!DOCTYPE html></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>html</span> <span class="token attr-name">lang</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>en<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>head</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>UTF-8<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>title</span><span class="token punctuation">></span></span>lagou<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>title</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">src</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>https://lib.baomitu.com/echarts/4.0.4/echarts.js<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript"></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>head</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>div</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>main<span class="token punctuation">"</span></span><span class="token style-attr language-css"><span class="token attr-name"> <span class="token attr-name">style</span></span><span class="token punctuation">="</span><span class="token attr-value"><span class="token property">width</span><span class="token punctuation">:</span> <span class="token number">1200</span>px<span class="token punctuation">;</span><span class="token property">height</span><span class="token punctuation">:</span><span class="token number">600</span>px<span class="token punctuation">;</span></span><span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>div</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>script</span> <span class="token attr-name">type</span><span class="token attr-value"><span class="token punctuation">=</span><span class="token punctuation">"</span>text/javascript<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token script language-javascript">
-        <span class="token keyword">var</span> lagou_chart <span class="token operator">=</span> echarts<span class="token punctuation">.</span><span class="token function">init</span><span class="token punctuation">(</span>document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'main'</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token string">'black'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        lagou_chart<span class="token punctuation">.</span><span class="token function">setOption</span><span class="token punctuation">(</span>
-             <span class="token punctuation">{</span>
-    title<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        text<span class="token punctuation">:</span> <span class="token string">'沪宁苏锡四市平均收入'</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    tooltip<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-    legend<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        data<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span><span class="token operator">%</span> <span class="token keyword">for</span> p <span class="token keyword">in</span> citys <span class="token operator">%</span><span class="token punctuation">}</span><span class="token string">'{{ p }}'</span><span class="token punctuation">,</span> <span class="token punctuation">{</span><span class="token operator">%</span> endfor <span class="token operator">%</span><span class="token punctuation">}</span><span class="token punctuation">]</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    radar<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// shape: 'circle',</span>
-        name<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-            textStyle<span class="token punctuation">:</span> <span class="token punctuation">{</span>
-                color<span class="token punctuation">:</span> <span class="token string">'#fff'</span><span class="token punctuation">,</span>
-                backgroundColor<span class="token punctuation">:</span> <span class="token string">'#161627'</span><span class="token punctuation">,</span>
-                borderRadius<span class="token punctuation">:</span> <span class="token number">3</span><span class="token punctuation">,</span>
-                padding<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">]</span>
-            <span class="token punctuation">}</span>
-        <span class="token punctuation">}</span><span class="token punctuation">,</span>
-        indicator<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-
-            <span class="token punctuation">{</span><span class="token operator">%</span> <span class="token keyword">for</span> p <span class="token keyword">in</span> kinds<span class="token operator">%</span><span class="token punctuation">}</span><span class="token punctuation">{</span>
-                     value<span class="token punctuation">:</span> <span class="token number">100000</span><span class="token punctuation">,</span>
-                     name<span class="token punctuation">:</span> <span class="token string">'{{ p }}'</span><span class="token punctuation">,</span>
-                     <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token operator">%</span> endfor <span class="token operator">%</span><span class="token punctuation">}</span>
-        <span class="token punctuation">]</span>
-    <span class="token punctuation">}</span><span class="token punctuation">,</span>
-    series<span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token punctuation">{</span>
-        name<span class="token punctuation">:</span> <span class="token string">'沪宁苏锡'</span><span class="token punctuation">,</span>
-        type<span class="token punctuation">:</span> <span class="token string">'radar'</span><span class="token punctuation">,</span>
-        <span class="token comment" spellcheck="true">// areaStyle: {normal: {}},</span>
-        data<span class="token punctuation">:</span> <span class="token punctuation">[</span>
-
-            <span class="token punctuation">{</span><span class="token operator">%</span> <span class="token keyword">for</span> v<span class="token punctuation">,</span>p <span class="token keyword">in</span> salarys<span class="token operator">|</span><span class="token function">zip</span><span class="token punctuation">(</span>citys<span class="token punctuation">)</span><span class="token operator">%</span><span class="token punctuation">}</span><span class="token punctuation">{</span>
-                     value<span class="token punctuation">:</span> <span class="token punctuation">{</span><span class="token punctuation">{</span> v <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-                     name<span class="token punctuation">:</span> <span class="token string">'{{ p }}'</span><span class="token punctuation">,</span>
-                     <span class="token punctuation">}</span><span class="token punctuation">,</span><span class="token punctuation">{</span><span class="token operator">%</span> endfor <span class="token operator">%</span><span class="token punctuation">}</span>
-
-
-        <span class="token punctuation">]</span>
-    <span class="token punctuation">}</span><span class="token punctuation">]</span>
-<span class="token punctuation">}</span>
-        <span class="token punctuation">)</span>
-    </span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>script</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>body</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>html</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4>图</h4>
-
-<p>详情见<a href="http://47.93.38.75/ec.html" target="_blank" rel="noopener">链接</a></p>
-<p><img src="http://img.masheng.fun/b.png" alt></p>
+                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
 
             </div>
             <hr/>
@@ -655,7 +505,7 @@ app<span class="token punctuation">.</span>jinja_env<span class="token punctuati
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.masheng.fun/2020/02/17/la-gou-shu-ju-echarts-ke-shi-hua/">http://www.masheng.fun/2020/02/17/la-gou-shu-ju-echarts-ke-shi-hua/</a>
+                    <a href="http://www.masheng.fun/uncategorized/hello-world.html">http://www.masheng.fun/uncategorized/hello-world.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -692,19 +542,7 @@ app<span class="token punctuation">.</span>jinja_env<span class="token punctuati
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            
-                                <a href="/tags/flask/">
-                                    <span class="chip bg-color">flask</span>
-                                </a>
-                            
-                                <a href="/tags/echarts/">
-                                    <span class="chip bg-color">echarts</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
-                                    <span class="chip bg-color">数据可视化</span>
-                                </a>
-                            
+                            <span class="chip bg-color">无标签</span>
                         </div>
                     
                 </div>
@@ -1135,39 +973,34 @@ app<span class="token punctuation">.</span>jinja_env<span class="token punctuati
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/02/19/flume-cai-ji-nginx-ri-zhi-dao-hdfss/">
+                <a href="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.html">
                     <div class="card-image">
                         
                         
-                        <img src="http://img.masheng.fun/5.jpg" class="responsive-img" alt="flume采集nginx日志到hdfs">
+                        <img src="http://img.masheng.fun/23.jpg" class="responsive-img" alt="Pandas数据处理-map、apply、applymap详解">
                         
-                        <span class="card-title">flume采集nginx日志到hdfs</span>
+                        <span class="card-title">Pandas数据处理-map、apply、applymap详解</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            conf文件
+                            
+一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。
 
-a1.sources = r1
-a1.sinks = k1
-a1.channels = c1
-
-# Describe/configure the source
-a1.sources.r1.type = exec
-a1.sou
+在日常的数据处理中，经常会对一个DataFrame进行逐行、逐列和逐元素的操作，对
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-19
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/hadoop/" class="post-category">
-                                    hadoop
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="post-category">
+                                    数据分析
                                 </a>
                             
                             
@@ -1177,16 +1010,12 @@ a1.sou
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/flume/">
-                        <span class="chip bg-color">flume</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                        <span class="chip bg-color">数据分析</span>
                     </a>
                     
-                    <a href="/tags/nginx/">
-                        <span class="chip bg-color">nginx</span>
-                    </a>
-                    
-                    <a href="/tags/log/">
-                        <span class="chip bg-color">log</span>
+                    <a href="/tags/pandas/">
+                        <span class="chip bg-color">pandas</span>
                     </a>
                     
                 </div>
@@ -1197,58 +1026,37 @@ a1.sou
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/14/mapreduce-diao-you-xiao-jie/">
+                <a href="/uncategorized/hello-world.html">
                     <div class="card-image">
                         
                         
-                        <img src="http://img.masheng.fun/5.jpg" class="responsive-img" alt="Mapreduce调优小结">
+                        <img src="http://img.masheng.fun/12.jpg" class="responsive-img" alt="Hello World">
                         
-                        <span class="card-title">Mapreduce调优小结</span>
+                        <span class="card-title">Hello World</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            基本参数调节
-以下参数是在自己的 MapReduce 应用程序中配置就可以生效
-
-
-mapreduce.map.memory.mb:
-
-一个 Map Task 可使用的内存上限（单位:MB），默认为 1024。如果 Map Task 实际使
+                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/hadoop/" class="post-category">
-                                    hadoop
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            MaSheng
                             
                         </span>
                     </div>
                 </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/hadoop/">
-                        <span class="chip bg-color">hadoop</span>
-                    </a>
-                    
-                    <a href="/tags/mapreduce%E8%B0%83%E4%BC%98/">
-                        <span class="chip bg-color">mapreduce调优</span>
-                    </a>
-                    
-                </div>
+
                 
             </div>
         </div>

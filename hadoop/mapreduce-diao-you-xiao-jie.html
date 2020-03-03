@@ -4,8 +4,14 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="云服务器的伪分布hadoop, MS Blog">
-    <meta name="description" content="我希望自己能够有足够的运气和足够的勇气去见到命运里更多的不同的风。也期待在未来的日子里，能够被这些涌动的气流雕刻成不一样的山川与河流。">
+    <meta name="keywords" content="Mapreduce调优小结, MS Blog">
+    <meta name="description" content="基本参数调节
+以下参数是在自己的 MapReduce 应用程序中配置就可以生效
+
+
+mapreduce.map.memory.mb:
+
+一个 Map Task 可使用的内存上限（单位:MB），默认为 1024。如果 Map Task 实际使">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -13,7 +19,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>云服务器的伪分布hadoop | MS Blog</title>
+    <title>Mapreduce调优小结 | MS Blog</title>
     <link rel="icon" type="image/png" href="http://img.masheng.fun/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://lib.baomitu.com/font-awesome/5.11.1/css/all.css">
@@ -305,12 +311,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.masheng.fun/25.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.masheng.fun/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">云服务器的伪分布hadoop</h1>
+                    <h1 class="description center-align post-title">Mapreduce调优小结</h1>
                 </div>
             </div>
         </div>
@@ -431,12 +437,8 @@
                                 <span class="chip bg-color">hadoop</span>
                             </a>
                         
-                            <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
-                                <span class="chip bg-color">伪分布</span>
-                            </a>
-                        
-                            <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/">
-                                <span class="chip bg-color">阿里云</span>
+                            <a href="/tags/mapreduce%E8%B0%83%E4%BC%98/">
+                                <span class="chip bg-color">mapreduce调优</span>
                             </a>
                         
                     </div>
@@ -447,8 +449,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E9%85%8D%E7%BD%AE/" class="post-category">
-                                配置
+                            <a href="/categories/hadoop/" class="post-category">
+                                hadoop
                             </a>
                         
                     </div>
@@ -460,7 +462,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-02-08
+                    2020-02-14
                 </div>
                 
 
@@ -469,14 +471,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    516
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    2 分
                 </div>
                 
 				
@@ -492,159 +494,70 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <blockquote>
-<p>我希望自己能够有足够的运气和足够的勇气去见到命运里更多的不同的风。也期待在未来的日子里，能够被这些涌动的气流雕刻成不一样的山川与河流。<br>–《见风》</p>
-</blockquote>
-<p>厦门大学数据库实验室网站提供了阿里云构建大数据环境的详细流程，从服务器的配置到ubuntu的配置到大数据环境的搭建</p>
-<p>详情见<a href="http://dblab.xmu.edu.cn/blog/1952-2/" target="_blank" rel="noopener">dblab.xmu.edu</a></p>
-<h2>一、安装jdk</h2>
-<h4>下载jdk</h4>
-
-<p>（提取码：q4zl）<a href="https://pan.baidu.com/s/1F6uc3rp5BIHK7cbF6ezAUw" target="_blank" rel="noopener">点击这里下载</a></p>
-<p> <a href="https://oracle.com/java/technologies/javase/javase8-archive-downloads.html" target="_blank" rel="noopener">官网下载</a></p>
-<h4>上传到/home下，解压缩</h4>
-
-<pre><code>
-tar -zxvf /home/jdk-8u45-linux-x64.tar.gz -C /usr/local/
-</code></pre><h4>将Java添加至环境变量</h4>
-
-<pre><code>vim /etc/profile
-添加如下：
-export JAVA_HOME=/usr/local/jdk1.8.0_45
-export PATH=$PATH:$JAVA_HOME/bin
-</code></pre><pre><code>source /etc/profile 生效
-java -version 检测一下
-systemctl status firewalld 检查下防火墙状态
-(如果为active状态,执行
-systemctl stop firewalld
-systemctl disable firewalld)</code></pre><h2>二 、环境配置</h2>
-<h4>修改hostname</h4>
-
-<pre><code>vim /etc/hostname
-修改为hadoop
-hostnamectl set-hostname hadoop 立即生效</code></pre><h4>修改映射关系</h4>
-
-<pre><code>vim /etc/hosts
-
-127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
-::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-172.19.199.187 hadoop</code></pre><blockquote>
-<p>注意：172.19.199.187改成你的私网ip！！！（私网ip阿里云控制台上有显示）</p>
-</blockquote>
-<h4>创建用户hadoop</h4>
-
-<pre><code>adduser hadoop 创建用户
-passwd hadoop 修改密码
-
-给hadoop用户root权限
-vim /etc/sudoers
-添加一行
-hadoop ALL=(root) NOPASSWD:ALL</code></pre><h4>设置ssh</h4>
-
-<pre><code>生成密钥
-ssh-keygen -t rsa -P &quot;&quot; 
-将密钥写入ssh中，这样在本地启动时，就可以避免输入密码
-cat ~/.ssh/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</code></pre><h2>三、Hadoop伪分布式环境搭建</h2>
-
-<pre><code>下载hadoop,在/home下执行
-wget https://mirrors.aliyun.com/apache/hadoop/common/hadoop-2.8.5/hadoop-2.8.5.tar.gz
-
-解压
-tar -zxvf /home/hadoop-2.8.5.tar.gz -C /usr/local/
-改名
-mv hadoop-2.8.5 hadoop
-修改文件权限
-sudo chown -R hadoop:hadoop /usr/local/hadoop</code></pre><h4>修改hadoop/etc/hadoop/hadoop-env.sh文件</h4>
-
-<pre class="line-numbers language-shell"><code class="language-shell">export JAVA_HOME=/usr/local/jdk1.8.0_45<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h4>修改hadoop/etc/hadoop/core-site.xml文件</h4>
-
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hadoop.tmp.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>file:/usr/local/hadoop/tmp<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>Abase for other temporary directories.<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>fs.defaultFS<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>hdfs://172.19.199.187:9000<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<blockquote>
-<p>注意：172.19.199.187改成你的私网ip！！！（私网ip阿里云控制台上有显示）</p>
-</blockquote>
-<h4>修改etc/hadoop/hdfs-site.xml文件
-    指定HDFS文件存储的副本数个数，默认是3个，这里是单台机器就设置为1，这个数字要小于datanode的节点数</h4>
-
-<pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.replication<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>1<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.namenode.name.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>file:/usr/local/hadoop/tmp/dfs/name<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.datanode.data.dir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>file:/usr/local/hadoop/tmp/dfs/data<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-    <span class="token comment" spellcheck="true">&lt;!-- 如果是通过公网IP访问阿里云上内网搭建的集群 --></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>dfs.client.use.datanode.hostname<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>description</span><span class="token punctuation">></span></span>only cofig in clients<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>description</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<h4>将hadoop添加至环境变量</h4>
-
-<pre><code>vim /etc/profile
-添加如下：
-export HADOOP_HOME=/usr/local/hadoop
-export PATH=$PATH:$HADOOP_HOME/bin:$HADOOP_HOME/sbin
-</code></pre><blockquote>
-<p>source /etc/profile 执行生效</p>
-</blockquote>
-<pre><code>hdfs namenode -format 格式化
-start-dfs.sh 启动hdfs
-jps查看</code></pre><pre><code>21923 Jps
-21592 DataNode
-21417 NameNode
-21806 SecondaryNameNode</code></pre><blockquote>
-<p>单机不用启动yarn</p>
-</blockquote>
-<h2>四 查看HDFS外部UI界面（阿里云)</h2>
+                <h4>基本参数调节</h4>
+以下参数是在自己的 MapReduce 应用程序中配置就可以生效
 
 <blockquote>
-<p>开启服务器外网访问端口—-网络和安全-》安全组-》配置规则</p>
+<p>mapreduce.map.memory.mb:</p>
 </blockquote>
-<p><img src="/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/1.png" alt></p>
+<p>一个 Map Task 可使用的内存上限（单位:MB），默认为 1024。如果 Map Task 实际使用的资源量超过该值，则会被强制杀死。</p>
 <blockquote>
-<p>添加安全组规则-》添加端口50070</p>
+<p>mapreduce.reduce.memory.mb: </p>
 </blockquote>
-<p><img src="/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/2.png" alt></p>
+<p>一个 Reduce Task 可使用的资源上限（单位:MB），默认为 1024。如果 Reduce Task 实际使用的资源量超过该值，则会被强制杀死。</p>
 <blockquote>
-<p>访问web端口</p>
+<p>mapreduce.map.cpu.vcores: </p>
 </blockquote>
-<pre><code>http://公网ip:50070</code></pre><blockquote>
-<p>查看live的datanode</p>
-</blockquote>
-<p><img src="/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/3.png" alt></p>
+<p>每个 Maptask 可用的最多 cpu core 数目, 默认值: 1</p>
 <blockquote>
-<p>上传一个文件执行mapreduce-wordcount测试</p>
+<p>mapreduce.reduce.cpu.vcores: </p>
 </blockquote>
-<pre><code>上传文件
-hadoop fs -put /lipstick.csv /
+<p>每个 Reducetask 可用最多 cpu core 数目默认值: 1</p>
+<blockquote>
+<p>mapreduce.map.java.opts: </p>
+</blockquote>
+<p>Map Task 的 JVM 参数，你可以在此配置默认的 java heap size 等参数, 例如：“-Xmx1024m -verbose:gc -Xloggc:/tmp/@taskid@.gc”<br>（@taskid@会被 Hadoop 框架自动换为相应的 taskid）, 默认值: “”<br>mapreduce.reduce.java.opts: Reduce Task 的 JVM 参数，你可以在此配置默认的 java heap size 等参数, 例如：“-Xmx1024m -verbose:gc -Xloggc:/tmp/@taskid@.gc”, 默认值: “”</p>
+<blockquote>
+<p>应该在 yarn 启动之前就配置在服务器的配置文件中才能生效</p>
+</blockquote>
+<blockquote>
+<p>yarn.scheduler.minimum-allocation-mb RM </p>
+</blockquote>
+<p>中每个容器请求的最小配置，以 MB 为单位，默认 1024。</p>
+<blockquote>
+<p>yarn.scheduler.maximum-allocation-mb RM </p>
+</blockquote>
+<p>中每个容器请求的最大分配，以 MB 为单位，默认 8192。</p>
+<blockquote>
+<p>yarn.scheduler.minimum-allocation-vcores 1<br>yarn.scheduler.maximum-allocation-vcores 32</p>
+</blockquote>
+<blockquote>
+<p>yarn.nodemanager.resource.memory-mb </p>
+</blockquote>
+<p>表示该节点上YARN可使用的物理内存总量，默认是 8192（MB），注意，如果你的节点内存资源不够 8GB，则需要调减小这个值，而 YARN不会智能的探测节点的物理内存总量。</p>
+<p>shuffle 性能优化的关键参数，应在 yarn 启动之前就配置好</p>
+<blockquote>
+<p>mapreduce.task.io.sort.mb  100 </p>
+</blockquote>
+<p>shuffle 的环形缓冲区大小，默认 100m</p>
+<blockquote>
+<p>mapreduce.map.sort.spill.percent 0.8 </p>
+</blockquote>
+<p>环形缓冲区溢出的阈值，默认 80%</p>
+<h4>精细调节</h4>
 
-执行
-hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.8.5.jar wordcount /lipstick.csv /output</code></pre><p><img src="/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/4.png" alt></p>
 <blockquote>
-<p>阿里云上搭建的hadoop集群，需要配置映射集群经过内网访问，也就是局域网的ip地址。<br>如果配置为公网IP地址，就会出现集群启动不了，namenode和secondarynamenode启动不了，如果将主机的映射文件配置为内网IP集群就可以正常启动了。但通过eclipse开发工具访问会出错，显示了阿里云内网的ip地址来访问datanode。</p>
+<p>主要内存参数调节</p>
 </blockquote>
-<p>摘录引用：</p>
-<p><a href="https://www.jianshu.com/p/18ded352cf40" target="_blank" rel="noopener">https://www.jianshu.com/p/18ded352cf40</a></p>
-<p><a href="http://dblab.xmu.edu.cn/blog/2022-2/" target="_blank" rel="noopener">http://dblab.xmu.edu.cn/blog/2022-2/</a></p>
-<p><a href="https://blog.csdn.net/u010886217/article/details/83479380" target="_blank" rel="noopener">https://blog.csdn.net/u010886217/article/details/83479380</a></p>
+<p><a href="https://blog.csdn.net/z3935212/article/details/78637157" target="_blank" rel="noopener">https://blog.csdn.net/z3935212/article/details/78637157</a><br><a href="https://www.cnblogs.com/wcgstudy/p/10788193.html" target="_blank" rel="noopener">https://www.cnblogs.com/wcgstudy/p/10788193.html</a></p>
+<blockquote>
+<p>Hadoop性能调优全面总结</p>
+</blockquote>
+<p><a href="https://blog.csdn.net/pansaky/article/details/83347357" target="_blank" rel="noopener">https://blog.csdn.net/pansaky/article/details/83347357</a></p>
+<blockquote>
+<p>官网</p>
+</blockquote>
+<p><a href="https://hadoop.apache.org/docs" target="_blank" rel="noopener">https://hadoop.apache.org/docs</a></p>
 
             </div>
             <hr/>
@@ -670,7 +583,7 @@ hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.masheng.fun/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/">http://www.masheng.fun/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/</a>
+                    <a href="http://www.masheng.fun/hadoop/mapreduce-diao-you-xiao-jie.html">http://www.masheng.fun/hadoop/mapreduce-diao-you-xiao-jie.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -712,12 +625,8 @@ hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.
                                     <span class="chip bg-color">hadoop</span>
                                 </a>
                             
-                                <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
-                                    <span class="chip bg-color">伪分布</span>
-                                </a>
-                            
-                                <a href="/tags/%E9%98%BF%E9%87%8C%E4%BA%91/">
-                                    <span class="chip bg-color">阿里云</span>
+                                <a href="/tags/mapreduce%E8%B0%83%E4%BC%98/">
+                                    <span class="chip bg-color">mapreduce调优</span>
                                 </a>
                             
                         </div>
@@ -1150,37 +1059,41 @@ hadoop jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/02/09/centos7-an-zhuang-mysql5-7/">
+                <a href="/shu-ju-ke-shi-hua/la-gou-shu-ju-echarts-ke-shi-hua.html">
                     <div class="card-image">
                         
                         
-                        <img src="http://img.masheng.fun/19.jpg" class="responsive-img" alt="centos7安装Mysql5.7">
+                        <img src="http://img.masheng.fun/3.jpg" class="responsive-img" alt="拉钩数据echarts可视化">
                         
-                        <span class="card-title">centos7安装Mysql5.7</span>
+                        <span class="card-title">拉钩数据echarts可视化</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
-要大笑、要做梦、要与众不同。人生是一场伟大的冒险。——《外婆的道歉信》
+                            数据格式
 
-为yum配置mysql57的源
 
-# 下载MySQL的repository
-wget -i -c http://dev.mysql.com/get/mysql57-
+后端代码
+
+import pymysql
+from flask import Flask, render_template
+import json
+
+app = Flask(__name__)
+app.jinja_env.fi
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-09
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-17
                         </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E9%85%8D%E7%BD%AE/" class="post-category">
-                                    配置
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="post-category">
+                                    数据可视化
                                 </a>
                             
                             
@@ -1190,12 +1103,16 @@ wget -i -c http://dev.mysql.com/get/mysql57-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/centos7/">
-                        <span class="chip bg-color">centos7</span>
+                    <a href="/tags/flask/">
+                        <span class="chip bg-color">flask</span>
                     </a>
                     
-                    <a href="/tags/mysql/">
-                        <span class="chip bg-color">mysql</span>
+                    <a href="/tags/echarts/">
+                        <span class="chip bg-color">echarts</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+                        <span class="chip bg-color">数据可视化</span>
                     </a>
                     
                 </div>
@@ -1209,25 +1126,30 @@ wget -i -c http://dev.mysql.com/get/mysql57-
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/02/07/ha-hadoop-pei-zhi-wen-jian/">
+                <a href="/pei-zhi/hive-de-an-zhuang.html">
                     <div class="card-image">
                         
                         
-                        <img src="http://img.masheng.fun/7.jpg" class="responsive-img" alt="HA-Hadoop">
+                        <img src="http://img.masheng.fun/8.jpg" class="responsive-img" alt="hive的安装">
                         
-                        <span class="card-title">HA-Hadoop</span>
+                        <span class="card-title">hive的安装</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            高可用hadoop集群
-在Hadoop2.0之前，只有一个NameNode，若NameNode机器出现故障，那么整个集群都无法使用。这个架构存在单点故障的隐患。之后推出了HA的架构，即有两个NameNode，一台为active状态，一台为s
+                            
+《美国往事》里有句台词说：”当我对世事厌倦的时候，我就会想到你。想到你在世界的某个地方生活着，存在着，我就愿意忍受一切。你的存在对我来说，很重要。
+
+安装hive之前，请完成：
+hadoop的安装配置
+mysql的安装配置
+hdfs的启动
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-09
                             </span>
                         <span class="publish-author">
                             
@@ -1244,12 +1166,12 @@ wget -i -c http://dev.mysql.com/get/mysql57-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/hadoop/">
-                        <span class="chip bg-color">hadoop</span>
+                    <a href="/tags/hive/">
+                        <span class="chip bg-color">hive</span>
                     </a>
                     
-                    <a href="/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/">
-                        <span class="chip bg-color">高可用</span>
+                    <a href="/tags/mysql%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">mysql模式</span>
                     </a>
                     
                 </div>

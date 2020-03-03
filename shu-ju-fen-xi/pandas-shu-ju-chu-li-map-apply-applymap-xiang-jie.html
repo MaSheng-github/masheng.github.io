@@ -4,10 +4,11 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="hbase伪分布, MS Blog">
-    <meta name="description" content="HBase简介
+    <meta name="keywords" content="Pandas数据处理-map、apply、applymap详解, MS Blog">
+    <meta name="description" content="
+一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。
 
-HBase是一个分布式的、面向列的开源数据库,源于Google的一篇论文《BigTable：一个结构化数据的分布式存储系统》。HBase以表的形式存储数据，表有行和列组成，列划分为若干个列族/列簇(column famil">
+在日常的数据处理中，经常会对一个DataFrame进行逐行、逐列和逐元素的操作，对">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -15,7 +16,7 @@ HBase是一个分布式的、面向列的开源数据库,源于Google的一篇�
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>hbase伪分布 | MS Blog</title>
+    <title>Pandas数据处理-map、apply、applymap详解 | MS Blog</title>
     <link rel="icon" type="image/png" href="http://img.masheng.fun/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://lib.baomitu.com/font-awesome/5.11.1/css/all.css">
@@ -307,12 +308,12 @@ HBase是一个分布式的、面向列的开源数据库,源于Google的一篇�
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.masheng.fun/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.masheng.fun/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">hbase伪分布</h1>
+                    <h1 class="description center-align post-title">Pandas数据处理-map、apply、applymap详解</h1>
                 </div>
             </div>
         </div>
@@ -429,16 +430,12 @@ HBase是一个分布式的、面向列的开源数据库,源于Google的一篇�
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/hadoop/">
-                                <span class="chip bg-color">hadoop</span>
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                                <span class="chip bg-color">数据分析</span>
                             </a>
                         
-                            <a href="/tags/hbase/">
-                                <span class="chip bg-color">hbase</span>
-                            </a>
-                        
-                            <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
-                                <span class="chip bg-color">伪分布</span>
+                            <a href="/tags/pandas/">
+                                <span class="chip bg-color">pandas</span>
                             </a>
                         
                     </div>
@@ -449,8 +446,8 @@ HBase是一个分布式的、面向列的开源数据库,源于Google的一篇�
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E9%85%8D%E7%BD%AE/" class="post-category">
-                                配置
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/" class="post-category">
+                                数据分析
                             </a>
                         
                     </div>
@@ -462,7 +459,7 @@ HBase是一个分布式的、面向列的开源数据库,源于Google的一篇�
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-03
+                    2020-02-07
                 </div>
                 
 
@@ -471,14 +468,14 @@ HBase是一个分布式的、面向列的开源数据库,源于Google的一篇�
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    631
+                    1.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    5 分
                 </div>
                 
 				
@@ -494,62 +491,84 @@ HBase是一个分布式的、面向列的开源数据库,源于Google的一篇�
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3>HBase简介</h3>
+                <blockquote>
+<p>一盏灯， 一片昏黄； 一简书， 一杯淡茶。 守着那一份淡定， 品读属于自己的寂寞。 保持淡定， 才能欣赏到最美丽的风景！ 保持淡定， 人生从此不再寂寞。</p>
+</blockquote>
+<p>在日常的数据处理中，经常会对一个DataFrame进行逐行、逐列和逐元素的操作，对应这些操作，Pandas中的map,apply和applymap可以解决绝大部分这样的数据处理需求。这篇文章就以案例附带图解的方式，为大家详细介绍一下这三个方法的实现原理，相信读完本文后，不论是小白还是Pandas的进阶学习者，都会对这三个方法有更深入的理解。</p>
+<pre class="line-numbers language-python"><code class="language-python">boolean<span class="token operator">=</span><span class="token punctuation">[</span><span class="token boolean">True</span><span class="token punctuation">,</span><span class="token boolean">False</span><span class="token punctuation">]</span> 
+gender<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"男"</span><span class="token punctuation">,</span><span class="token string">"女"</span><span class="token punctuation">]</span> 
+color<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">"white"</span><span class="token punctuation">,</span><span class="token string">"black"</span><span class="token punctuation">,</span><span class="token string">"yellow"</span><span class="token punctuation">]</span> 
+data<span class="token operator">=</span>pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span><span class="token punctuation">{</span>     
+    <span class="token string">"height"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">150</span><span class="token punctuation">,</span><span class="token number">190</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     
+    <span class="token string">"weight"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">,</span><span class="token number">90</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     
+    <span class="token string">"smoker"</span><span class="token punctuation">:</span><span class="token punctuation">[</span>boolean<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>     
+    <span class="token string">"gender"</span><span class="token punctuation">:</span><span class="token punctuation">[</span>gender<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">,</span>     
+    <span class="token string">"age"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">,</span><span class="token number">90</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     
+    <span class="token string">"color"</span><span class="token punctuation">:</span><span class="token punctuation">[</span>color<span class="token punctuation">[</span>x<span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span>len<span class="token punctuation">(</span>color<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token punctuation">]</span> 
+<span class="token punctuation">}</span> 
+<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>数据集如下所示，各列分别代表身高、体重、是否吸烟、性别、年龄和肤色</p>
+<p><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/1.jpg" alt></p>
+<h1>Series数据处理</h1>
+如果需要把数据集中 gender 列的男替换为1，女替换为0，怎么做呢？绝对不是用for循环实现，使 用 Series.map() 可以很容易做到，少仅需一行代码。
 
-<p>HBase是一个分布式的、面向列的开源数据库,源于Google的一篇论文《BigTable：一个结构化数据的分布式存储系统》。HBase以表的形式存储数据，表有行和列组成，列划分为若干个列族/列簇(column family)。欲了解HBase的官方资讯，请访问HBase官方网站。</p>
-<p>HBase的运行有三种模式：单机模式、伪分布式模式、分布式模式。</p>
-<p>单机模式：在一台计算机上安装和使用HBase，使用Ubuntu本地文件系统保存数据，不涉及数据的分布式存储HDFS；</p>
-<p>伪分布式模式：在一台计算机上模拟一个小的集群，数据使用分布式文件系统HDFS存储；<br>分布式模式：使用多台计算机实现物理意义上的分布式存储。这里出于学习目的，我们只重点讨论单机模式和伪分布式模式。</p>
-<h3>下载HBase安装文件</h3>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true">#①使用字典进行映射 </span>
+data<span class="token punctuation">[</span><span class="token string">"gender"</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">"gender"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>map<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">"男"</span><span class="token punctuation">:</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"女"</span><span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">}</span><span class="token punctuation">)</span> 
+<span class="token comment" spellcheck="true">#②使用函数</span>
+<span class="token keyword">def</span> <span class="token function">gender_map</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    gender <span class="token operator">=</span> <span class="token number">1</span> <span class="token keyword">if</span> x <span class="token operator">==</span> <span class="token string">"男"</span> <span class="token keyword">else</span> <span class="token number">0</span>
+    <span class="token keyword">return</span> gender
+<span class="token comment" spellcheck="true">#注意这里传入的是函数名，不带括号</span>
+data<span class="token punctuation">[</span><span class="token string">"gender"</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">"gender"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>map<span class="token punctuation">(</span>gender_map<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/2.jpg" alt><br><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/3.jpg" alt><br>不论是利用字典还是函数进行映射，方法都是把对应的数据逐个当作参数传入到字典或函数中，得到映射后的值。</p>
+<h1>apply</h1>
+同时Series对象还有 apply 方法， apply 方法的作用原理和 map 方法类似，区别在于 apply 能够传入 功能更为复杂的函数。怎么理解呢？一起看看下面的例子。
+假设在数据统计的过程中，年龄 age 列有较大误差，需要对其进行调整（加上或减去一个值）， 由于这个加上或减去的值未知，故在定义函数时，需要加多一个参数 bias ，此时用 map 方法是操 作不了的（传入 map 的函数只能接收一个参数）， apply 方法则可以解决这个问题
 
-<pre class="line-numbers language-shell"><code class="language-shell">cd /home
-wget https://mirrors.aliyun.com/apache/hbase/2.1.9/hbase-2.1.9-bin.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>解压</p>
-<pre class="line-numbers language-shell"><code class="language-shell">tar -zxvf /home/hbase-2.1.9-bin.tar.gz -C /usr/local
-cd  /usr/local
-sudo mv hbase-2.1.9 hbase<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-<p>环境变量</p>
-<pre class="line-numbers language-shell"><code class="language-shell">export HBASE_HOME=/usr/local/hbase
-export PATH=$PATH:${HBASE_HOME}/bin<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>使环境变量生效</p>
-<pre class="line-numbers language-shell"><code class="language-shell">source /etc/profile<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>查看HBase版本，确定HBase是否安装成功，命令如下：</p>
-<pre class="line-numbers language-shell"><code class="language-shell">/usr/local/hbase/bin/hbase version<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<h3>HBase伪分布式模式配置</h3>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">apply_age</span><span class="token punctuation">(</span>x<span class="token punctuation">,</span>bias<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> x<span class="token operator">+</span>bias
 
-<pre><code>cd  /usr/local/hbase/conf
-vim hbase-env.sh</code></pre><p>配置JAVA_HOME，HBASE_CLASSPATH，HBASE_MANAGES_ZK.<br>HBASE_CLASSPATH设置为本机Hadoop安装目录下的conf目录（即/usr/local/hadoop/conf）</p>
-<pre><code>export JAVA_HOME=/usr/local/java/jdk1.8.0_45
-export HBASE_CLASSPATH=/usr/local/hadoop/conf 
-export HBASE_MANAGES_ZK=true</code></pre><p>编辑hbase-site.xml</p>
-<pre><code>vim hbase-site.xml</code></pre><pre class="line-numbers language-xml"><code class="language-xml"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>configuration</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hbase.rootdir<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>hdfs://192.168.1.106:9000/hbase<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>name</span><span class="token punctuation">></span></span>hbase.cluster.distributed<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>name</span><span class="token punctuation">></span></span>
-                <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>value</span><span class="token punctuation">></span></span>true<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>value</span><span class="token punctuation">></span></span>
-        <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>configuration</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>上面配置中，hbase.rootdir指定HBase的存储目录；hbase.cluster.distributed设置集群处于分布式模式。</p>
-<p>上面配置中，192.168.1.106是你的阿里云ECS实例的私网IP地址，你的私网IP地址可能不是这个，可以登录阿里云控制台，查询自己的ECS实例的私网IP地址。</p>
-<h3>测试运行HBase</h3>
-第一步：首先启动Hadoop，如果已经启动hadoop请跳过此步骤
+<span class="token comment" spellcheck="true">#以元组的方式传入额外的参数</span>
+data<span class="token punctuation">[</span><span class="token string">"age"</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">[</span><span class="token string">"age"</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>apply_age<span class="token punctuation">,</span>args<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/4.jpg" alt><br>可以看到age列都减了3，当然，这里只是简单举了个例子，当需要进行复杂处理时，更能体现 apply 的作用。<br>总而言之，对于Series而言， map 可以解决绝大多数的数据处理需求，但如果需要使用较为复杂的 函数，则需要用到 apply 方法。</p>
+<h1>DataFrame数据处理</h1>
+<h2>apply</h2>
+对 DataFrame 而言， apply 是非常重要的数据处理方法，它可以接收各种各样的函数（Python内置 的或自定义的），处理方式很灵活，下面通过几个例子来看看 apply 的具体使用及其原理。
+在进行具体介绍之前，首先需要介绍一下 DataFrame 中 axis 的概念，在 DataFrame 对象的大多数方法 中，都会有 axis 这个参数，它控制了你指定的操作是沿着0轴还是1轴进行。 axis=0 代表操作对 列 columns 进行， axis=1 代表操作对 行row 进行，如下图所示。
 
-<p>第二步：启动HBase.</p>
-<pre><code>start-hbase.sh</code></pre><p>jps，看进程信息</p>
-<p>进入shell界面：</p>
-<pre><code>hbase shell</code></pre><pre class="line-numbers language-sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token string">'student'</span><span class="token punctuation">,</span><span class="token string">'Sname'</span><span class="token punctuation">,</span><span class="token string">'Ssex'</span><span class="token punctuation">,</span><span class="token string">'Sage'</span><span class="token punctuation">,</span><span class="token string">'Sdept'</span><span class="token punctuation">,</span><span class="token string">'course'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>添加数据</p>
-<pre class="line-numbers language-sql"><code class="language-sql">put <span class="token string">'student'</span><span class="token punctuation">,</span><span class="token string">'95001'</span><span class="token punctuation">,</span><span class="token string">'Sname'</span><span class="token punctuation">,</span><span class="token string">'LiYing'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>查看数据</p>
-<pre class="line-numbers language-sql"><code class="language-sql">get <span class="token string">'student'</span><span class="token punctuation">,</span><span class="token string">'95001'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>hbase的web网页查看(需要先开安全组)</p>
-<p>公网ip:60010</p>
-<p>引用：</p>
-<p><a href="http://dblab.xmu.edu.cn/blog/install-hbase/" target="_blank" rel="noopener">http://dblab.xmu.edu.cn/blog/install-hbase/</a></p>
+<p><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/5.jpg" alt><br>假设现在需要对 data 中的数值列分别进行取对数和求和的操作，这时可以用 apply 进行相应的操 作，因为是对列进行操作，所以需要指定 axis=0 ，使用下面的两行代码可以很轻松地解决我们的 问题。</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token comment" spellcheck="true"># 沿着0轴求和</span>
+data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"height"</span><span class="token punctuation">,</span><span class="token string">"weight"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>np<span class="token punctuation">.</span>sum<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
 
+<span class="token comment" spellcheck="true"># 沿着0轴取对数</span>
+data<span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">"height"</span><span class="token punctuation">,</span><span class="token string">"weight"</span><span class="token punctuation">,</span><span class="token string">"age"</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">.</span>apply<span class="token punctuation">(</span>np<span class="token punctuation">.</span>log<span class="token punctuation">,</span> axis<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/6.jpg" alt><br><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/7.jpg" alt><br>当沿着 轴0（axis=0） 进行操作时，会将各列( columns )默认以 Series 的形式作为参数，传入到你指定 的操作函数中，操作后合并并返回相应的结果。<br>那如果在实际使用中需要按行进行操作（ axis=1 ）,那整个过程又是怎么实现的呢？<br>在数据集中，有身高和体重的数据，所以根据这个，我们可以计算每个人的BMI指数（体检时常 用的指标，衡量人体肥胖程度和是否健康的重要标准），计算公式是： 体重指数BMI=体重/身高的平方 （国际单位kg/㎡） ，因为需要对每个样本进行操作，这里使用 axis=1 的 apply 进行操作，代码如下：</p>
+<pre class="line-numbers language-python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">BMI</span><span class="token punctuation">(</span>series<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    weight <span class="token operator">=</span> series<span class="token punctuation">[</span><span class="token string">"weight"</span><span class="token punctuation">]</span>
+    height <span class="token operator">=</span> series<span class="token punctuation">[</span><span class="token string">"height"</span><span class="token punctuation">]</span><span class="token operator">/</span><span class="token number">100</span>
+    BMI <span class="token operator">=</span> weight<span class="token operator">/</span>height<span class="token operator">**</span><span class="token number">2</span>
+    <span class="token keyword">return</span> BMI
+
+data<span class="token punctuation">[</span><span class="token string">"BMI"</span><span class="token punctuation">]</span> <span class="token operator">=</span> data<span class="token punctuation">.</span>apply<span class="token punctuation">(</span>BMI<span class="token punctuation">,</span>axis<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/8.jpg" alt><br>当 apply 设置了 axis=1 对行进行操作时，会默认将每一行数据以 Series 的形式（Series的索引为列 名）传入指定函数，返回相应的结果。<br>总结一下对 DataFrame 的 apply 操作：</p>
+<ol>
+<li>当 axis=0 时，对 每列columns 执行指定函数；当 axis=1 时，对 每行row 执行指定函数。 2. 无论 axis=0 还是 axis=1 ，其传入指定函数的默认形式均为 Series ，可以通过设置 raw=True 传入 numpy数组 。 3. 对每个Series执行结果后，会将结果整合在一起返回（若想有返回值，定义函数时需要 return 相应的值） 4. 当然， DataFrame 的 apply 和 Series 的 apply 一样，也能接收更复杂的函数，如传入参数等，实现 原理是一样的，具体用法详见官方文档。<h1>applymap</h1>
+applymap 的用法比较简单，会对 DataFrame 中的每个单元格执行指定函数的操作，虽然用途不如 apply 广泛，但在某些场合下还是比较有用的，如下面这个例子。
+
+</li>
+</ol>
+<pre class="line-numbers language-python"><code class="language-python">df <span class="token operator">=</span> pd<span class="token punctuation">.</span>DataFrame<span class="token punctuation">(</span>     
+    <span class="token punctuation">{</span>         
+        <span class="token string">"A"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>         
+        <span class="token string">"B"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>         
+        <span class="token string">"C"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>         
+        <span class="token string">"D"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>         
+        <span class="token string">"E"</span><span class="token punctuation">:</span>np<span class="token punctuation">.</span>random<span class="token punctuation">.</span>randn<span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">,</span>     <span class="token punctuation">}</span> <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/9.jpg" alt><br>将所有的值保留两位小数显示，使用applymap</p>
+<pre class="line-numbers language-python"><code class="language-python">df<span class="token punctuation">.</span>applymap<span class="token punctuation">(</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span><span class="token string">"%.2f"</span> <span class="token operator">%</span> x<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p><img src="/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.htm/10.jpg" alt></p>
+<h2>Powered by MaSheng</h2>
             </div>
             <hr/>
 
@@ -574,7 +593,7 @@ export HBASE_MANAGES_ZK=true</code></pre><p>编辑hbase-site.xml</p>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.masheng.fun/2020/03/03/hbase-wei-fen-bu/">http://www.masheng.fun/2020/03/03/hbase-wei-fen-bu/</a>
+                    <a href="http://www.masheng.fun/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.html">http://www.masheng.fun/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -612,16 +631,12 @@ export HBASE_MANAGES_ZK=true</code></pre><p>编辑hbase-site.xml</p>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/hadoop/">
-                                    <span class="chip bg-color">hadoop</span>
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/">
+                                    <span class="chip bg-color">数据分析</span>
                                 </a>
                             
-                                <a href="/tags/hbase/">
-                                    <span class="chip bg-color">hbase</span>
-                                </a>
-                            
-                                <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
-                                    <span class="chip bg-color">伪分布</span>
+                                <a href="/tags/pandas/">
+                                    <span class="chip bg-color">pandas</span>
                                 </a>
                             
                         </div>
@@ -1050,32 +1065,30 @@ export HBASE_MANAGES_ZK=true</code></pre><p>编辑hbase-site.xml</p>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/03/03/hbase-wei-fen-bu/">
+                <a href="/pei-zhi/ha-hadoop-pei-zhi-wen-jian.html">
                     <div class="card-image">
                         
                         
-                        <img src="http://img.masheng.fun/14.jpg" class="responsive-img" alt="hbase伪分布">
+                        <img src="http://img.masheng.fun/7.jpg" class="responsive-img" alt="HA-Hadoop">
                         
-                        <span class="card-title">hbase伪分布</span>
+                        <span class="card-title">HA-Hadoop</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            HBase简介
-
-HBase是一个分布式的、面向列的开源数据库,源于Google的一篇论文《BigTable：一个结构化数据的分布式存储系统》。HBase以表的形式存储数据，表有行和列组成，列划分为若干个列族/列簇(column famil
+                            高可用hadoop集群
+在Hadoop2.0之前，只有一个NameNode，若NameNode机器出现故障，那么整个集群都无法使用。这个架构存在单点故障的隐患。之后推出了HA的架构，即有两个NameNode，一台为active状态，一台为s
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-03
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1088,7 +1101,6 @@ HBase是一个分布式的、面向列的开源数据库,源于Google的一篇�
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1096,12 +1108,8 @@ HBase是一个分布式的、面向列的开源数据库,源于Google的一篇�
                         <span class="chip bg-color">hadoop</span>
                     </a>
                     
-                    <a href="/tags/hbase/">
-                        <span class="chip bg-color">hbase</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
-                        <span class="chip bg-color">伪分布</span>
+                    <a href="/tags/%E9%AB%98%E5%8F%AF%E7%94%A8/">
+                        <span class="chip bg-color">高可用</span>
                     </a>
                     
                 </div>
@@ -1115,58 +1123,32 @@ HBase是一个分布式的、面向列的开源数据库,源于Google的一篇�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2020/03/03/yuan-cheng-yun-fu-wu-qi-mongodb-de-pei-zhi/">
+                <a href="/uncategorized/hello-world.html">
                     <div class="card-image">
                         
                         
-                        <img src="http://img.masheng.fun/13.jpg" class="responsive-img" alt="远程云服务器mongodb的配置">
+                        <img src="http://img.masheng.fun/12.jpg" class="responsive-img" alt="Hello World">
                         
-                        <span class="card-title">远程云服务器mongodb的配置</span>
+                        <span class="card-title">Hello World</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            阿里云安装mongodb4.0
-下载
-
-$ cd /home
-$ wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.16.tgz
-解压缩安装包，并重命名文件夹。
-t
+                            Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-03-03
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-07
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E9%85%8D%E7%BD%AE/" class="post-category">
-                                    配置
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            MaSheng
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/Mongodb/">
-                        <span class="chip bg-color">Mongodb</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                        <span class="chip bg-color">云服务器</span>
-                    </a>
-                    
-                    <a href="/tags/robot3t/">
-                        <span class="chip bg-color">robot3t</span>
-                    </a>
-                    
                 </div>
                 
             </div>

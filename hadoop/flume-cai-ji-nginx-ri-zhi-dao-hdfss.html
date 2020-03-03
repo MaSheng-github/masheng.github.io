@@ -4,14 +4,16 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="远程云服务器mongodb的配置, MS Blog">
-    <meta name="description" content="阿里云安装mongodb4.0
-下载
+    <meta name="keywords" content="flume采集nginx日志到hdfs, MS Blog">
+    <meta name="description" content="conf文件
 
-$ cd /home
-$ wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.16.tgz
-解压缩安装包，并重命名文件夹。
-t">
+a1.sources = r1
+a1.sinks = k1
+a1.channels = c1
+
+# Describe/configure the source
+a1.sources.r1.type = exec
+a1.sou">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -19,7 +21,7 @@ t">
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>远程云服务器mongodb的配置 | MS Blog</title>
+    <title>flume采集nginx日志到hdfs | MS Blog</title>
     <link rel="icon" type="image/png" href="http://img.masheng.fun/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="https://lib.baomitu.com/font-awesome/5.11.1/css/all.css">
@@ -311,12 +313,12 @@ t">
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.masheng.fun/13.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('http://img.masheng.fun/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">远程云服务器mongodb的配置</h1>
+                    <h1 class="description center-align post-title">flume采集nginx日志到hdfs</h1>
                 </div>
             </div>
         </div>
@@ -433,16 +435,16 @@ t">
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Mongodb/">
-                                <span class="chip bg-color">Mongodb</span>
+                            <a href="/tags/flume/">
+                                <span class="chip bg-color">flume</span>
                             </a>
                         
-                            <a href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                                <span class="chip bg-color">云服务器</span>
+                            <a href="/tags/nginx/">
+                                <span class="chip bg-color">nginx</span>
                             </a>
                         
-                            <a href="/tags/robot3t/">
-                                <span class="chip bg-color">robot3t</span>
+                            <a href="/tags/log/">
+                                <span class="chip bg-color">log</span>
                             </a>
                         
                     </div>
@@ -453,8 +455,8 @@ t">
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E9%85%8D%E7%BD%AE/" class="post-category">
-                                配置
+                            <a href="/categories/hadoop/" class="post-category">
+                                hadoop
                             </a>
                         
                     </div>
@@ -466,7 +468,7 @@ t">
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2020-03-03
+                    2020-02-19
                 </div>
                 
 
@@ -475,14 +477,14 @@ t">
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    503
+                    195
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    1 分
                 </div>
                 
 				
@@ -498,71 +500,44 @@ t">
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3>阿里云安装mongodb4.0</h3>
-下载
+                <h3>conf文件</h3>
 
-<pre class="line-numbers language-shell"><code class="language-shell">$ cd /home
-$ wget https://fastdl.mongodb.org/linux/mongodb-linux-x86_64-4.0.16.tgz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>解压缩安装包，并重命名文件夹。</p>
-<pre class="line-numbers language-shell"><code class="language-shell">tar -zxvf mongodb-linux-x86_64-4.0.16.tgz -C /usr/local/
-mv mongodb-linux-x86_64-4.0.0 mongodb<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>配置环境变量</p>
-<p>vim /etc/profile</p>
-<p>添加</p>
-<pre class="line-numbers language-sh"><code class="language-sh">export MONGODB_HOME=/usr/local/mongodb
-export PATH=$MONGODB_HOME/bin:$PATH<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>使环境变量生效</p>
-<p>source /etc/profile</p>
-<p>创建数据库目录</p>
-<pre class="line-numbers language-shell"><code class="language-shell">$ cd /usr/local/mongodb
-$ touch mongodb.conf
-$ mkdir db
-$ mkdir log
-$ cd log
-$ touch mongodb.log<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>修改mongodb配置文件</p>
-<pre><code>vim /usr/mongodb/local/mongodb.conf</code></pre><p>添加如下</p>
-<pre class="line-numbers language-sh"><code class="language-sh">port=27012 #修改端口，防止被攻击，默认是27017
-dbpath= /usr/local/mongodb/db #数据库存文件存放目录
-logpath= /usr/local/mongodb/log/mongodb.log #日志文件存放路径
-logappend=true #使用追加的方式写日志
-fork=true #以守护进程的方式运行，创建服务器进程
-maxConns=100 #最大同时连接数
-auth=true #启用验证
-journal=true #每次写入会记录一条操作日志（通过journal可以重新构造出写入的数据）。
-#即使宕机，启动时wiredtiger会先将数据恢复到最近一次的checkpoint点，然后重放后续的journal日志来恢复。
-storageEngine=wiredTiger  #存储引擎有mmapv1、wiretiger、mongorocks
-bind_ip = 0.0.0.0  #这样就可外部访问了，例如从win10中去连虚拟机中的MongoDB<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>设置文件夹权限</p>
-<pre class="line-numbers language-shell"><code class="language-shell">$ chmod 777 db
-$ chmod 777 log<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-<p>启动</p>
-<pre class="line-numbers language-shell"><code class="language-shell">mongod -f /usr/local/mongodb/mongodb.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-<p>开启端口</p>
-<p><img src="http://img.masheng.fun/blog/20200303/YDGawXtOxurU.png" alt></p>
-<p>进入shell</p>
-<pre><code>mongo --port 27012</code></pre><p>依次执行下列命令 添加用户名</p>
-<pre class="line-numbers language-sql"><code class="language-sql"><span class="token comment" spellcheck="true">//使用admin数据库</span>
-<span class="token keyword">use</span> admin
+<pre class="line-numbers language-bash"><code class="language-bash">a1.sources <span class="token operator">=</span> r1
+a1.sinks <span class="token operator">=</span> k1
+a1.channels <span class="token operator">=</span> c1
 
-<span class="token comment" spellcheck="true">//给admin数据库添加管理员用户名和密码，用户名和密码请自行设置</span>
-<span class="token number">db</span><span class="token punctuation">.</span>createUser<span class="token punctuation">(</span>{<span class="token keyword">user</span>:<span class="token string">"admin"</span><span class="token punctuation">,</span>pwd:<span class="token string">"123456"</span><span class="token punctuation">,</span>roles:<span class="token punctuation">[</span><span class="token string">"root"</span><span class="token punctuation">]</span>}<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># Describe/configure the source</span>
+a1.sources.r1.type <span class="token operator">=</span> <span class="token function">exec</span>
+a1.sources.r1.command <span class="token operator">=</span> <span class="token function">tail</span> -F /usr/local/nginx/logs/access.log
+a1.sources.r1.channels <span class="token operator">=</span> c1
 
-<span class="token comment" spellcheck="true">//验证是否成功，返回1则代表成功</span>
-<span class="token number">db</span><span class="token punctuation">.</span>auth<span class="token punctuation">(</span><span class="token string">"admin"</span><span class="token punctuation">,</span> <span class="token string">"123456"</span><span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># Describe the sink</span>
+a1.sinks.k1.type <span class="token operator">=</span> hdfs
+a1.sinks.k1.hdfs.path <span class="token operator">=</span> /flume/nginx/%y-%m-%d/%H%M/
+a1.sinks.k1.hdfs.filePrefix <span class="token operator">=</span> events-
+a1.sinks.k1.hdfs.round <span class="token operator">=</span> <span class="token boolean">true</span>
+a1.sinks.k1.hdfs.roundValue <span class="token operator">=</span> 10
+a1.sinks.k1.hdfs.roundUnit <span class="token operator">=</span> minute
+a1.sinks.k1.hdfs.rollInterval <span class="token operator">=</span> 3
+a1.sinks.k1.hdfs.rollSize <span class="token operator">=</span> 20
+a1.sinks.k1.hdfs.rollCount <span class="token operator">=</span> 5
+a1.sinks.k1.hdfs.batchSize <span class="token operator">=</span> 1
+a1.sinks.k1.hdfs.useLocalTimeStamp <span class="token operator">=</span> <span class="token boolean">true</span>
+<span class="token comment" spellcheck="true">#生成的文件类型，默认是Sequencefile，可用DataStream，则为普通文本</span>
+a1.sinks.k1.hdfs.fileType <span class="token operator">=</span> DataStream
 
-<span class="token comment" spellcheck="true">//切换到要设置的数据库,以test为例</span>
-<span class="token keyword">use</span> test
+<span class="token comment" spellcheck="true"># Use a channel which buffers events in memory</span>
+a1.channels.c1.type <span class="token operator">=</span> memory
+a1.channels.c1.capacity <span class="token operator">=</span> 1000
+a1.channels.c1.transactionCapacity <span class="token operator">=</span> 100
 
-<span class="token comment" spellcheck="true">//为test创建用户,用户名和密码请自行设置。</span>
-<span class="token number">db</span><span class="token punctuation">.</span>createUser<span class="token punctuation">(</span>{<span class="token keyword">user</span>: <span class="token string">"test"</span><span class="token punctuation">,</span> pwd: <span class="token string">"123456"</span><span class="token punctuation">,</span> roles: <span class="token punctuation">[</span>{ role: <span class="token string">"dbOwner"</span><span class="token punctuation">,</span> <span class="token number">db</span>: <span class="token string">"test"</span> }<span class="token punctuation">]</span>}<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>执行完后，ctrl + c结束shell</p>
-<p>远程连接mongodb</p>
-<p>官网下载robo 3t  <a href="https://robomongo.org/download" target="_blank" rel="noopener">https://robomongo.org/download</a></p>
-<p><img src="http://img.masheng.fun/blog/20200303/MOj92rCXMrgN.png?imageslim" alt="mark"></p>
-<p><img src="http://img.masheng.fun/blog/20200303/m9o8crLSOxnN.png?imageslim" alt="mark"><br><img src="http://img.masheng.fun/blog/20200303/Yw4ynkf5quwI.png?imageslim" alt="mark"><br><img src="http://img.masheng.fun/blog/20200303/Q3bLqIUUvwNx.png?imageslim" alt="mark"></p>
-<p>摘录引用：</p>
-<p><a href="https://www.jianshu.com/p/994bc7b19b26" target="_blank" rel="noopener">https://www.jianshu.com/p/994bc7b19b26</a></p>
+<span class="token comment" spellcheck="true"># Bind the source and sink to the channel</span>
+a1.sources.r1.channels <span class="token operator">=</span> c1
+a1.sinks.k1.channel <span class="token operator">=</span> c1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3>启动</h3>
+
+<pre><code>flume-ng agent -n a1 -c conf -f /usr/local/flume/conf/test.conf</code></pre><p><img src="http://img.masheng.fun/c.png" alt></p>
+<p><img src="http://img.masheng.fun/d.png" alt></p>
 
             </div>
             <hr/>
@@ -588,7 +563,7 @@ $ chmod 777 log<span aria-hidden="true" class="line-numbers-rows"><span></span><
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://www.masheng.fun/2020/03/03/yuan-cheng-yun-fu-wu-qi-mongodb-de-pei-zhi/">http://www.masheng.fun/2020/03/03/yuan-cheng-yun-fu-wu-qi-mongodb-de-pei-zhi/</a>
+                    <a href="http://www.masheng.fun/hadoop/flume-cai-ji-nginx-ri-zhi-dao-hdfss.html">http://www.masheng.fun/hadoop/flume-cai-ji-nginx-ri-zhi-dao-hdfss.html</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -626,16 +601,16 @@ $ chmod 777 log<span aria-hidden="true" class="line-numbers-rows"><span></span><
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Mongodb/">
-                                    <span class="chip bg-color">Mongodb</span>
+                                <a href="/tags/flume/">
+                                    <span class="chip bg-color">flume</span>
                                 </a>
                             
-                                <a href="/tags/%E4%BA%91%E6%9C%8D%E5%8A%A1%E5%99%A8/">
-                                    <span class="chip bg-color">云服务器</span>
+                                <a href="/tags/nginx/">
+                                    <span class="chip bg-color">nginx</span>
                                 </a>
                             
-                                <a href="/tags/robot3t/">
-                                    <span class="chip bg-color">robot3t</span>
+                                <a href="/tags/log/">
+                                    <span class="chip bg-color">log</span>
                                 </a>
                             
                         </div>
@@ -1068,66 +1043,7 @@ $ chmod 777 log<span aria-hidden="true" class="line-numbers-rows"><span></span><
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2020/03/03/hbase-wei-fen-bu/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="http://img.masheng.fun/14.jpg" class="responsive-img" alt="hbase伪分布">
-                        
-                        <span class="card-title">hbase伪分布</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            HBase简介
-
-HBase是一个分布式的、面向列的开源数据库,源于Google的一篇论文《BigTable：一个结构化数据的分布式存储系统》。HBase以表的形式存储数据，表有行和列组成，列划分为若干个列族/列簇(column famil
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2020-03-03
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/%E9%85%8D%E7%BD%AE/" class="post-category">
-                                    配置
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/hadoop/">
-                        <span class="chip bg-color">hadoop</span>
-                    </a>
-                    
-                    <a href="/tags/hbase/">
-                        <span class="chip bg-color">hbase</span>
-                    </a>
-                    
-                    <a href="/tags/%E4%BC%AA%E5%88%86%E5%B8%83/">
-                        <span class="chip bg-color">伪分布</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2020/02/20/wang-yi-kao-la-kou-hong-shu-ju-fen-xi/">
+                <a href="/shu-ju-fen-xi/wang-yi-kao-la-kou-hong-shu-ju-fen-xi.html">
                     <div class="card-image">
                         
                         <img src="http://img.masheng.fun/24.jpg" class="responsive-img" alt="网易考拉口红数据分析">
@@ -1142,9 +1058,9 @@ HBase是一个分布式的、面向列的开源数据库,源于Google的一篇�
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-20
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-02-20
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -1170,6 +1086,73 @@ HBase是一个分布式的、面向列的开源数据库,源于Google的一篇�
                     
                     <a href="/tags/lipstick/">
                         <span class="chip bg-color">lipstick</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/shu-ju-ke-shi-hua/la-gou-shu-ju-echarts-ke-shi-hua.html">
+                    <div class="card-image">
+                        
+                        
+                        <img src="http://img.masheng.fun/3.jpg" class="responsive-img" alt="拉钩数据echarts可视化">
+                        
+                        <span class="card-title">拉钩数据echarts可视化</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            数据格式
+
+
+后端代码
+
+import pymysql
+from flask import Flask, render_template
+import json
+
+app = Flask(__name__)
+app.jinja_env.fi
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-02-17
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/" class="post-category">
+                                    数据可视化
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/flask/">
+                        <span class="chip bg-color">flask</span>
+                    </a>
+                    
+                    <a href="/tags/echarts/">
+                        <span class="chip bg-color">echarts</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E5%8F%AF%E8%A7%86%E5%8C%96/">
+                        <span class="chip bg-color">数据可视化</span>
                     </a>
                     
                 </div>

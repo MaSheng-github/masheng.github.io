@@ -18,8 +18,8 @@
   
   <entry>
     <title>hbase伪分布</title>
-    <link href="http://www.masheng.fun/2020/03/03/hbase-wei-fen-bu/"/>
-    <id>http://www.masheng.fun/2020/03/03/hbase-wei-fen-bu/</id>
+    <link href="http://www.masheng.fun/pei-zhi/hbase-wei-fen-bu.html"/>
+    <id>http://www.masheng.fun/pei-zhi/hbase-wei-fen-bu.html</id>
     <published>2020-03-03T03:20:24.000Z</published>
     <updated>2020-03-03T03:45:50.623Z</updated>
     
@@ -51,8 +51,8 @@
   
   <entry>
     <title>远程云服务器mongodb的配置</title>
-    <link href="http://www.masheng.fun/2020/03/03/yuan-cheng-yun-fu-wu-qi-mongodb-de-pei-zhi/"/>
-    <id>http://www.masheng.fun/2020/03/03/yuan-cheng-yun-fu-wu-qi-mongodb-de-pei-zhi/</id>
+    <link href="http://www.masheng.fun/pei-zhi/yuan-cheng-yun-fu-wu-qi-mongodb-de-pei-zhi.html"/>
+    <id>http://www.masheng.fun/pei-zhi/yuan-cheng-yun-fu-wu-qi-mongodb-de-pei-zhi.html</id>
     <published>2020-03-03T02:41:49.000Z</published>
     <updated>2020-03-03T03:51:05.717Z</updated>
     
@@ -86,8 +86,8 @@ $ wget
   
   <entry>
     <title>网易考拉口红数据分析</title>
-    <link href="http://www.masheng.fun/2020/02/20/wang-yi-kao-la-kou-hong-shu-ju-fen-xi/"/>
-    <id>http://www.masheng.fun/2020/02/20/wang-yi-kao-la-kou-hong-shu-ju-fen-xi/</id>
+    <link href="http://www.masheng.fun/shu-ju-fen-xi/wang-yi-kao-la-kou-hong-shu-ju-fen-xi.html"/>
+    <id>http://www.masheng.fun/shu-ju-fen-xi/wang-yi-kao-la-kou-hong-shu-ju-fen-xi.html</id>
     <published>2020-02-20T03:25:01.000Z</published>
     <updated>2020-03-02T05:03:03.168Z</updated>
     
@@ -118,8 +118,8 @@ $ wget
   
   <entry>
     <title>flume采集nginx日志到hdfs</title>
-    <link href="http://www.masheng.fun/2020/02/19/flume-cai-ji-nginx-ri-zhi-dao-hdfss/"/>
-    <id>http://www.masheng.fun/2020/02/19/flume-cai-ji-nginx-ri-zhi-dao-hdfss/</id>
+    <link href="http://www.masheng.fun/hadoop/flume-cai-ji-nginx-ri-zhi-dao-hdfss.html"/>
+    <id>http://www.masheng.fun/hadoop/flume-cai-ji-nginx-ri-zhi-dao-hdfss.html</id>
     <published>2020-02-19T11:22:48.000Z</published>
     <updated>2020-03-02T05:04:20.015Z</updated>
     
@@ -151,8 +151,8 @@ $ wget
   
   <entry>
     <title>拉钩数据echarts可视化</title>
-    <link href="http://www.masheng.fun/2020/02/17/la-gou-shu-ju-echarts-ke-shi-hua/"/>
-    <id>http://www.masheng.fun/2020/02/17/la-gou-shu-ju-echarts-ke-shi-hua/</id>
+    <link href="http://www.masheng.fun/shu-ju-ke-shi-hua/la-gou-shu-ju-echarts-ke-shi-hua.html"/>
+    <id>http://www.masheng.fun/shu-ju-ke-shi-hua/la-gou-shu-ju-echarts-ke-shi-hua.html</id>
     <published>2020-02-17T14:07:13.000Z</published>
     <updated>2020-03-02T05:02:22.523Z</updated>
     
@@ -187,8 +187,8 @@ $ wget
   
   <entry>
     <title>Mapreduce调优小结</title>
-    <link href="http://www.masheng.fun/2020/02/14/mapreduce-diao-you-xiao-jie/"/>
-    <id>http://www.masheng.fun/2020/02/14/mapreduce-diao-you-xiao-jie/</id>
+    <link href="http://www.masheng.fun/hadoop/mapreduce-diao-you-xiao-jie.html"/>
+    <id>http://www.masheng.fun/hadoop/mapreduce-diao-you-xiao-jie.html</id>
     <published>2020-02-14T04:44:54.000Z</published>
     <updated>2020-02-14T05:24:34.893Z</updated>
     
@@ -222,8 +222,8 @@ $ wget
   
   <entry>
     <title>hive的安装</title>
-    <link href="http://www.masheng.fun/2020/02/09/hive-de-an-zhuang/"/>
-    <id>http://www.masheng.fun/2020/02/09/hive-de-an-zhuang/</id>
+    <link href="http://www.masheng.fun/pei-zhi/hive-de-an-zhuang.html"/>
+    <id>http://www.masheng.fun/pei-zhi/hive-de-an-zhuang.html</id>
     <published>2020-02-09T04:20:00.000Z</published>
     <updated>2020-02-09T09:54:20.977Z</updated>
     
@@ -255,8 +255,8 @@ $ wget
   
   <entry>
     <title>centos7安装Mysql5.7</title>
-    <link href="http://www.masheng.fun/2020/02/09/centos7-an-zhuang-mysql5-7/"/>
-    <id>http://www.masheng.fun/2020/02/09/centos7-an-zhuang-mysql5-7/</id>
+    <link href="http://www.masheng.fun/pei-zhi/centos7-an-zhuang-mysql5-7.html"/>
+    <id>http://www.masheng.fun/pei-zhi/centos7-an-zhuang-mysql5-7.html</id>
     <published>2020-02-09T02:40:00.000Z</published>
     <updated>2020-02-09T07:52:30.167Z</updated>
     
@@ -289,8 +289,8 @@ $ wget
   
   <entry>
     <title>云服务器的伪分布hadoop</title>
-    <link href="http://www.masheng.fun/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/"/>
-    <id>http://www.masheng.fun/2020/02/08/yun-fu-wu-qi-de-wei-fen-bu-hadoop/</id>
+    <link href="http://www.masheng.fun/pei-zhi/yun-fu-wu-qi-de-wei-fen-bu-hadoop.html"/>
+    <id>http://www.masheng.fun/pei-zhi/yun-fu-wu-qi-de-wei-fen-bu-hadoop.html</id>
     <published>2020-02-08T11:49:58.000Z</published>
     <updated>2020-03-02T04:59:41.941Z</updated>
     
@@ -323,8 +323,8 @@ $ wget
   
   <entry>
     <title>HA-Hadoop</title>
-    <link href="http://www.masheng.fun/2020/02/07/ha-hadoop-pei-zhi-wen-jian/"/>
-    <id>http://www.masheng.fun/2020/02/07/ha-hadoop-pei-zhi-wen-jian/</id>
+    <link href="http://www.masheng.fun/pei-zhi/ha-hadoop-pei-zhi-wen-jian.html"/>
+    <id>http://www.masheng.fun/pei-zhi/ha-hadoop-pei-zhi-wen-jian.html</id>
     <published>2020-02-07T11:49:58.000Z</published>
     <updated>2020-02-08T13:33:04.394Z</updated>
     
@@ -353,8 +353,8 @@ $ wget
   
   <entry>
     <title>Pandas数据处理-map、apply、applymap详解</title>
-    <link href="http://www.masheng.fun/2020/02/07/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie/"/>
-    <id>http://www.masheng.fun/2020/02/07/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie/</id>
+    <link href="http://www.masheng.fun/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.html"/>
+    <id>http://www.masheng.fun/shu-ju-fen-xi/pandas-shu-ju-chu-li-map-apply-applymap-xiang-jie.html</id>
     <published>2020-02-07T07:35:58.000Z</published>
     <updated>2020-02-11T06:19:07.203Z</updated>
     
@@ -383,8 +383,8 @@ $ wget
   
   <entry>
     <title>Hello World</title>
-    <link href="http://www.masheng.fun/2020/02/07/hello-world/"/>
-    <id>http://www.masheng.fun/2020/02/07/hello-world/</id>
+    <link href="http://www.masheng.fun/uncategorized/hello-world.html"/>
+    <id>http://www.masheng.fun/uncategorized/hello-world.html</id>
     <published>2020-02-07T06:32:25.880Z</published>
     <updated>2020-02-07T06:32:25.880Z</updated>
     
