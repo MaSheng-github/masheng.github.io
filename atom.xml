@@ -108,11 +108,11 @@ $ wget
       <category term="数据分析" scheme="http://www.masheng.fun/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
     
-      <category term="pandas" scheme="http://www.masheng.fun/tags/pandas/"/>
-    
       <category term="口红" scheme="http://www.masheng.fun/tags/%E5%8F%A3%E7%BA%A2/"/>
     
       <category term="lipstick" scheme="http://www.masheng.fun/tags/lipstick/"/>
+    
+      <category term="pandas" scheme="http://www.masheng.fun/tags/pandas/"/>
     
   </entry>
   
@@ -375,9 +375,9 @@ $ wget
       <category term="数据分析" scheme="http://www.masheng.fun/categories/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
     
-      <category term="数据分析" scheme="http://www.masheng.fun/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="pandas" scheme="http://www.masheng.fun/tags/pandas/"/>
+    
+      <category term="数据分析" scheme="http://www.masheng.fun/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
